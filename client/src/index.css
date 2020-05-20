@@ -1,5 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Navbar */
+
 .logo-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#navbar {
+    margin-bottom: 0 !important;
+}
+
+/* home header */
+.header-image {
+    background-image: url('./components/images/headerImage.png');
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.backdrop {
+    width: 100%;
+    height: 250px;
+    background: rgba(10, 10, 10, 0.2);
 }

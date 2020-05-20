@@ -16,10 +16,15 @@ class Movies extends React.Component {
     }
     render() {
         return (
-            <p>movie page</p>
+
+            <h1>movies</h1>
+
+
+
         )
     }
 }
+
 
 const mapStateToProps = state => ({
     movies: state.movies.movies,
