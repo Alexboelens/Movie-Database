@@ -25,5 +25,37 @@
 .backdrop {
     width: 100%;
     height: 250px;
-    background: rgba(10, 10, 10, 0.2);
+    background: rgba(10, 10, 10, 0.3);
+}
+
+
+
+/* Trending Component */
+
+.movie-scroller {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.movie-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+.movie-box {
+    min-width: 207px;
+    height: 300px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 0px 20px 0px 0px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 8px 8px 7px rgb(56, 60, 61);
+}
+
+.title-text {
+    font-weight: 600;
+    padding: 15px 0px 0px 0px;
 }

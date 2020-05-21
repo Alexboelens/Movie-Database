@@ -1,6 +1,4 @@
 import React from 'react';
-import backdropImage from './images/movie-image.png';
-import { Container, Row, Col } from 'reactstrap';
 
 
 const HomeHeader = () => {
@@ -12,7 +10,6 @@ const HomeHeader = () => {
                     <h2 className='text-white'>Welcome!</h2>
                     <h4 className='text-white'>Countless movies, TV shows and people to discover. </h4>
                 </div>
-
             </div>
         </div>
 

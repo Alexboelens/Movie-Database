@@ -1,12 +1,16 @@
 import React from 'react';
-import HomeHeader from './HomeHeader'
+import HomeHeader from './HomeHeader';
+import HomeTrending from './HomeTrending';
 
-class Home extends React.Component {
-    render() {
-        return (
+
+const Home = () => {
+    return (
+        <div>
             <HomeHeader />
-        )
-    }
+            <HomeTrending />
+
+        </div>
+    )
 }
 
 
