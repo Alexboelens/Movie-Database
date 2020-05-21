@@ -24,8 +24,11 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/movies' component={Movies} />
+          <Route exact path='/movies/:id' component={Movies} />
           <Route exact path='/tv-shows' component={TvShows} />
+          <Route exact path='/tv-shows/:name' component={TvShows} />
           <Route exact path='/people' component={People} />
+          <Route exact path='/people/:name' component={People} />
 
 
           <Route exact path='/login' component={Login} />

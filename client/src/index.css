@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* Navbar */
 
 .logo-wrap {
@@ -53,11 +57,18 @@
     background-size: cover;
     background-repeat: no-repeat;
     box-shadow: 8px 8px 7px rgb(56, 60, 61);
-    background-image: url('./components//images//no-image.png');
 }
 
 .title-text {
     font-weight: 600;
     padding: 10px 0px 0px 0px;
     margin: 0px 52px 0px 0px;
+}
+
+/* loader */
+
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

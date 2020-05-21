@@ -2,7 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getTrendingMovies } from '../actions/movieActions';
 import Box from './Box';
+import Loader from './Loader';
 import { Container, Row, Col } from 'reactstrap';
+import noImage from './images/no-movie-image.png';
 
 
 class HomeTrendingMovies extends React.Component {
@@ -16,25 +18,29 @@ class HomeTrendingMovies extends React.Component {
         console.log(this.props.trendingMovies.results)
         return (
             <Container>
-                <Row>
-                    <Col>
-                        <h4 className='py-3'>Trending Movies</h4>
-                    </Col>
-                </Row>
+                {!this.props.trendingMoviesAreLoaded ? <Loader /> :
+                    <Row>
+                        <Col>
+                            <h4 className='py-3'>Trending Movies</h4>
+                        </Col>
+                    </Row>
+                }
                 <Row>
                     <Col className='movie-scroller'>
-                        {!this.props.trendingMoviesAreLoaded ? <h1>loading....</h1> :
+                        {this.props.trendingMoviesAreLoaded &&
                             this.props.trendingMovies.results.map(movie => {
                                 return <Box
-                                    image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                                     key={movie.id}
+                                    noImage={noImage}
+                                    image={movie.poster_path !== null && `https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                                    link={`movies/${movie.id}`}
                                     title={movie.name ? movie.name : movie.title}>
                                 </Box>
                             })
                         }
                     </Col>
                 </Row>
-            </Container>
+            </Container >
         )
     }
 }
