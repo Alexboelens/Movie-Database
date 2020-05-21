@@ -14,7 +14,6 @@ class HomeTrendingPeople extends React.Component {
 
 
     render() {
-        console.log(this.props.trendingPeople.results)
         return (
             <Container>
                 {this.props.trendingPeopleAreLoaded &&
@@ -28,7 +27,6 @@ class HomeTrendingPeople extends React.Component {
                     <Col className='movie-scroller mb-5'>
                         {this.props.trendingPeopleAreLoaded &&
                             this.props.trendingPeople.results.map(item => {
-                                console.log(item.profile_path);
                                 return <Box
                                     noImage={noImage}
                                     image={item.profile_path !== null && `https://image.tmdb.org/t/p/original${item.profile_path}`}

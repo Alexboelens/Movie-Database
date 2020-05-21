@@ -64,3 +64,9 @@ a {
     padding: 10px 0px 0px 0px;
     margin: 0px 52px 0px 0px;
 }
+
+/* search bar */
+
+.searchbar-wrap {
+    background: rgba(10, 10, 10, 0.3);
+}

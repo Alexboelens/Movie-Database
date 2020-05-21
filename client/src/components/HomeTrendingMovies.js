@@ -14,7 +14,6 @@ class HomeTrendingMovies extends React.Component {
 
 
     render() {
-        console.log(this.props.trendingMovies.results)
         return (
             <Container>
                 {this.props.trendingMoviesAreLoaded &&
