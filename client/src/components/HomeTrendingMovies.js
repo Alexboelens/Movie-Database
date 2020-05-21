@@ -5,7 +5,7 @@ import Box from './Box';
 import { Container, Row, Col } from 'reactstrap';
 
 
-class HomeTrending extends React.Component {
+class HomeTrendingMovies extends React.Component {
 
     componentDidMount() {
         this.props.getTrendingMovies();
@@ -25,26 +25,18 @@ class HomeTrending extends React.Component {
                     <Col className='movie-scroller'>
                         {!this.props.trendingMoviesAreLoaded ? <h1>loading....</h1> :
                             this.props.trendingMovies.results.map(movie => {
-                                return <Box image={movie.poster_path} key={movie.id} title={movie.name ? movie.name : movie.title}></Box>
+                                return <Box
+                                    image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                                    key={movie.id}
+                                    title={movie.name ? movie.name : movie.title}>
+                                </Box>
                             })
                         }
                     </Col>
-
                 </Row>
-
             </Container>
-
-
-
-
-
-
-
         )
     }
-
-
-
 }
 
 const mapStateToProps = state => ({
@@ -52,4 +44,4 @@ const mapStateToProps = state => ({
     trendingMoviesAreLoaded: state.movies.trendingMoviesAreLoaded
 })
 
-export default connect(mapStateToProps, { getTrendingMovies })(HomeTrending);
+export default connect(mapStateToProps, { getTrendingMovies })(HomeTrendingMovies);
