@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getTrendingMovies } from '../actions/movieActions';
 import Box from './Box';
-import Loader from './Loader';
 import { Container, Row, Col } from 'reactstrap';
 import noImage from './images/no-movie-image.png';
 
@@ -18,7 +17,7 @@ class HomeTrendingMovies extends React.Component {
         console.log(this.props.trendingMovies.results)
         return (
             <Container>
-                {!this.props.trendingMoviesAreLoaded ? <Loader /> :
+                {this.props.trendingMoviesAreLoaded &&
                     <Row>
                         <Col>
                             <h4 className='py-3'>Trending Movies</h4>
