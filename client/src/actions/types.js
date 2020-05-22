@@ -6,6 +6,7 @@ export const GET_SEARCH_RESULTS = 'GET_SEARCH_RESULTS';
 
 
 
+
 export const GET_MOVIES_BY_TITLE = 'GET_MOVIES_BY_TITLE';
 
 

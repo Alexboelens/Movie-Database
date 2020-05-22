@@ -13,4 +13,3 @@ export const getSearchResults = (query, page) => dispatch => {
         })
 }
 
-

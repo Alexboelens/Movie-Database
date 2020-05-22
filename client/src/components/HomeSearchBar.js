@@ -28,7 +28,7 @@ class SearchBar extends React.Component {
         return (
             <Container fluid={true}>
                 <Row>
-                    <Col className='searchbar-wrap'>
+                    <Col className='home-searchbar-wrap'>
                         <Form onSubmit={this.handleSubmit}>
                             <Container>
                                 <FormGroup className='py-1 d-flex'>

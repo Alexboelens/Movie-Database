@@ -8,6 +8,7 @@ import TvShows from './components/TvShows';
 import People from './components/People';
 import Home from './components/Home';
 import Login from './components/Login';
+import NoSearchResults from './components/NoSearchResult';
 import SearchResults from './components/SearchResults';
 import CreateAccount from './components/CreateAccount';
 import MyList from './components/MyList';
@@ -30,7 +31,7 @@ function App() {
           <Route exact path='/tv-shows/:name' component={TvShows} />
           <Route exact path='/people' component={People} />
           <Route exact path='/people/:name' component={People} />
-          <Route exact path='/search' component={SearchResults} />
+          <Route exact path='/search' component={NoSearchResults} />
           <Route exact path='/search/:query' component={SearchResults} />
 
 

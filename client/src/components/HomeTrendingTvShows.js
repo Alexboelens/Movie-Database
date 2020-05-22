@@ -24,7 +24,7 @@ class HomeTrendingTvShows extends React.Component {
                     </Row>
                 }
                 <Row>
-                    <Col className='movie-scroller'>
+                    <Col className='scroller'>
                         {this.props.trendingTvShowsAreLoaded &&
                             this.props.trendingTvShows.results.map(item => {
                                 return <Box
