@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { getSearchResults } from '../actions/searchActions';
+import SearchResultsSearchBar from './SearchResultsSearchBar';
+
 
 
 class SearchResultList extends React.Component {
@@ -10,14 +12,23 @@ class SearchResultList extends React.Component {
             page: 1
         }
         this.changePage = this.changePage.bind(this);
+        this.clearState = this.clearState.bind(this);
+    }
+
+    clearState() {
+        this.setState({
+            page: 1
+        })
     }
 
     async changePage() {
-        const query = window.location.pathname.split('/')[2]
-        await this.setState({
-            page: this.state.page + 1
-        })
-        this.props.getSearchResults(query, this.state.page)
+        const query = window.location.pathname.split('/')[2];
+        if (this.state.page < this.props.searchResults.total_pages) {
+            await this.setState({
+                page: this.state.page + 1
+            })
+            this.props.getSearchResults(query, this.state.page)
+        }
     }
 
     componentDidMount() {
@@ -26,10 +37,10 @@ class SearchResultList extends React.Component {
     }
 
     render() {
-        console.log(this.props.searchResults)
-
         return (
+
             <div>
+                <SearchResultsSearchBar onClick={this.clearState} />
                 {this.props.searchResultsAreLoaded &&
                     <div>
                         <div>
@@ -44,8 +55,6 @@ class SearchResultList extends React.Component {
                     </div>
                 }
             </div>
-
-
         )
     }
 }
