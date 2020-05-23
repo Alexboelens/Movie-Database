@@ -20,9 +20,6 @@ const SearchResultsListItem = props => {
                     </Row>
                 </Col>
             </Row>
-
-
-
         </Container>
     )
 }
@@ -31,4 +28,3 @@ export default SearchResultsListItem;
 
 
 
-{/* <div className='list-item-box1' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${props.image}), url(${props.noImage})` }}></div> */ }

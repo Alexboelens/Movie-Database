@@ -105,3 +105,9 @@ a {
     color: gray;
     font-size: 14px;
 }
+
+/* no results */
+
+.no-results-text {
+    font-size: 25px;
+}

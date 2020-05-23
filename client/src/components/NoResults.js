@@ -1,9 +1,10 @@
 import React from 'react';
+import { Container } from 'reactstrap';
 
 
 const NoResults = () => {
     return (
-        <div>no results found</div>
+        <Container className='text-center no-results-text'>NO RESULTS WERE FOUND</Container>
     )
 }
 

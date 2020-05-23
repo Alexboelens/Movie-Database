@@ -25,6 +25,7 @@ class SearchResultList extends React.Component {
             page: 1
         })
     }
+
     renderImages(item) {
         if (item.media_type === 'person' && item.profile_path !== null) {
             return item.profile_path;
@@ -55,13 +56,10 @@ class SearchResultList extends React.Component {
             await this.setState({
                 page: this.state.page + 1
             })
-            this.props.getSearchResults(query, this.state.page)
+            this.props.getSearchResults(query, this.state.page);
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     }
-
-
-
-
 
     componentDidMount() {
         const query = window.location.pathname.split('/')[2] !== undefined ? window.location.pathname.split('/')[2] : ''
