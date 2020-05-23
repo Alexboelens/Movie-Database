@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pagination as RSPagination, PaginationItem, PaginationLink, Container, Row, Col } from 'reactstrap';
+import { Pagination as RSPagination, PaginationItem, PaginationLink, Container } from 'reactstrap';
 
 const Pagination = props => {
     const pageNumbers = [];
@@ -15,47 +15,41 @@ const Pagination = props => {
             <div className="pagination-wrap">
                 <RSPagination>
                     <PaginationItem>
-                        <PaginationLink first />
+                        <PaginationLink first onClick={() => props.setPage(1)} href='#1' />
                     </PaginationItem>
                     <PaginationItem>
-                        <PaginationLink previous />
+                        <PaginationLink previous onClick={props.prevPage} disabled={props.pageNumber === 1 && true} />
                     </PaginationItem>
-                    <Container className="scroller">
+                    <div className="scroller">
                         {pageNumbers.map(page => (
                             <PaginationItem
+                                id={page}
                                 key={page}
                                 active={props.pageNumber.toString() === page.toString() && true}
                             >
-                                <PaginationLink onClick={() => props.paginate(page)}>
+                                <PaginationLink onClick={() => props.setPage(page)}>
                                     {page}
                                 </PaginationLink>
                             </PaginationItem>
                         ))
                         }
-                    </Container>
+                    </div>
                     <PaginationItem>
-                        <PaginationLink next />
+                        <PaginationLink next onClick={() => props.nextPage()} />
                     </PaginationItem>
                     <PaginationItem>
-                        <PaginationLink last />
+                        <PaginationLink last
+                            onClick={() => props.setPage(props.numPages)}
+                            href={`#${props.numPages}`}
+                        />
                     </PaginationItem>
                 </RSPagination >
             </div>
-
-
-            {/* fix styling text */}
-            <Container>
-                <Row>
-                    <Col>  Pages: {props.numPages}</Col>
-                    <Col> Results: {props.totalResults}</Col>
-                </Row>
-            </Container>
-
-
-
-
-
-
+            {props.numPages !== 0 && <div>
+                <div className='bold mt-2 text-center'>  Pages: {props.numPages}</div>
+                <div className='bold text-center'> Results: {props.totalResults}</div>
+            </div>
+            }
         </Container >
 
     )

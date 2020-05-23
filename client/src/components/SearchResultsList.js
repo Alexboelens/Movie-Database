@@ -15,7 +15,8 @@ class SearchResultList extends React.Component {
         this.state = {
             page: 1
         }
-        this.changePage = this.changePage.bind(this);
+        this.nextPage = this.nextPage.bind(this);
+        this.prevPage = this.prevPage.bind(this);
         this.clearState = this.clearState.bind(this);
         this.renderImages = this.renderImages.bind(this);
         this.renderDate = this.renderDate.bind(this);
@@ -65,14 +66,25 @@ class SearchResultList extends React.Component {
         }
     }
 
-    async changePage() {
+    async prevPage() {
+        const query = window.location.pathname.split('/')[2];
+        if (this.state.page !== 1) {
+            await this.setState({
+                page: this.state.page - 1
+            })
+            this.props.getSearchResults(query, this.state.page);
+            window.scrollTo({ top: 0 });
+        }
+    }
+
+    async nextPage() {
         const query = window.location.pathname.split('/')[2];
         if (this.state.page < this.props.searchResults.total_pages) {
             await this.setState({
                 page: this.state.page + 1
             })
             this.props.getSearchResults(query, this.state.page);
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({ top: 0 });
         }
     }
 
@@ -82,6 +94,7 @@ class SearchResultList extends React.Component {
             page: pageNumber
         })
         this.props.getSearchResults(query, this.state.page);
+        window.scrollTo({ top: 0 });
     }
 
     componentDidMount() {
@@ -92,8 +105,6 @@ class SearchResultList extends React.Component {
 
     render() {
         const results = this.props.searchResults;
-        console.log(this.props.searchResults)
-        console.log(results)
         return (
             <div>
                 <SearchResultsSearchBar onClick={this.clearState} />
@@ -118,9 +129,11 @@ class SearchResultList extends React.Component {
                                         <Pagination
                                             totalPages={this.props.searchResults.total_pages}
                                             pageNumber={this.state.page}
-                                            paginate={this.setPage}
+                                            setPage={this.setPage}
                                             numPages={results.total_pages}
                                             totalResults={results.total_results}
+                                            nextPage={this.nextPage}
+                                            prevPage={this.prevPage}
                                         />
                                     </div>
                                 </div>
