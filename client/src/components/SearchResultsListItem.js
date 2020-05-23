@@ -7,6 +7,11 @@ const SearchResultsListItem = props => {
         <Container className='list-item-wrap'>
             <Row>
                 <Col xs='2' lg='1' className='list-item-box1 mx-3' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${props.image}), url(${props.noImage})` }}>
+                    <Link to={props.link} id='link'>
+                        <div className='image-link'>
+
+                        </div>
+                    </Link>
                 </Col>
                 <Col>
                     <Row>
