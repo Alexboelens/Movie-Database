@@ -18,12 +18,25 @@ class SearchResultList extends React.Component {
         this.clearState = this.clearState.bind(this);
         this.renderImages = this.renderImages.bind(this);
         this.renderDate = this.renderDate.bind(this);
+        this.renderLink = this.renderLink.bind(this);
     }
 
     clearState() {
         this.setState({
             page: 1
         })
+    }
+
+    renderLink(item) {
+        if (item.media_type === 'person') {
+            return `/people/${item.id}`
+        }
+        if (item.media_type === 'tv') {
+            return `/tv-shows/${item.id}`
+        }
+        if (item.media_type === 'movie') {
+            return `/movies/${item.id}`
+        }
     }
 
     renderImages(item) {
@@ -82,6 +95,7 @@ class SearchResultList extends React.Component {
                                     {results.map(item => {
                                         return <SearchResultsListItem
                                             key={item.id}
+                                            link={this.renderLink(item)}
                                             noImage={noImage}
                                             image={this.renderImages(item)}
                                             title={item.name ? item.name : item.original_title}

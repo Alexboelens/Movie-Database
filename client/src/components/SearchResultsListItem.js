@@ -6,11 +6,15 @@ const SearchResultsListItem = props => {
     return (
         <Container className='list-item-wrap'>
             <Row>
-                <Col xs='2' lg='1' className='list-item-box1 mx-3' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${props.image}), url(${props.noImage})` }}></Col>
-
+                <Col xs='2' lg='1' className='list-item-box1 mx-3' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${props.image}), url(${props.noImage})` }}>
+                </Col>
                 <Col>
                     <Row>
-                        <Col className='bold'>{props.title}</Col>
+                        <Col className='bold'>
+                            <Link to={props.link} id='link'>
+                                {props.title}
+                            </Link>
+                        </Col>
                     </Row>
                     <Row>
                         <Col className='date'>{props.date}</Col>
@@ -20,6 +24,7 @@ const SearchResultsListItem = props => {
                     </Row>
                 </Col>
             </Row>
+
         </Container>
     )
 }

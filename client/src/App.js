@@ -5,6 +5,9 @@ import store from './store';
 import AppNavbar from './components/AppNavbar';
 import Movies from './components/Movies';
 import TvShows from './components/TvShows';
+import TvShowPage from './components/TvShowPage';
+import MoviePage from './components/MoviePage';
+import PersonPage from './components/PersonPage';
 import People from './components/People';
 import Home from './components/Home';
 import Login from './components/Login';
@@ -26,11 +29,11 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/movies' component={Movies} />
-          <Route exact path='/movies/:id' component={Movies} />
+          <Route exact path='/movies/:id' component={MoviePage} />
           <Route exact path='/tv-shows' component={TvShows} />
-          <Route exact path='/tv-shows/:name' component={TvShows} />
+          <Route exact path='/tv-shows/:id' component={TvShowPage} />
           <Route exact path='/people' component={People} />
-          <Route exact path='/people/:name' component={People} />
+          <Route exact path='/people/:id' component={PersonPage} />
           <Route exact path='/search' component={NoSearchResults} />
           <Route exact path='/search/:query' component={SearchResults} />
 
