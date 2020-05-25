@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { getMoviesByTitle } from '../actions/movieActions';
 
 
+
+// delete code and refactor after redux function
 class Movies extends React.Component {
 
     componentDidMount() {

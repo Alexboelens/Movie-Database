@@ -5,10 +5,10 @@ import store from './store';
 import AppNavbar from './components/AppNavbar';
 import Movies from './components/Movies';
 import TvShows from './components/TvShows';
-import TvShowPage from './components/TvShowPage';
-import MoviePage from './components/MoviePage';
-import PersonPage from './components/PersonPage';
 import People from './components/People';
+import SingleTvShowPage from './components/SingleTvShowPage';
+import SingleMoviePage from './components/SingleMoviePage';
+import SinglePersonPage from './components/SinglePersonPage';
 import Home from './components/Home';
 import Login from './components/Login';
 import NoSearchResults from './components/NoSearchResult';
@@ -24,16 +24,14 @@ function App() {
     <Provider store={store}>
       <Router>
         <AppNavbar />
-
-
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/movies' component={Movies} />
-          <Route exact path='/movies/:id' component={MoviePage} />
+          <Route exact path='/movies/:id' component={SingleMoviePage} />
           <Route exact path='/tv-shows' component={TvShows} />
-          <Route exact path='/tv-shows/:id' component={TvShowPage} />
+          <Route exact path='/tv-shows/:id' component={SingleTvShowPage} />
           <Route exact path='/people' component={People} />
-          <Route exact path='/people/:id' component={PersonPage} />
+          <Route exact path='/people/:id' component={SinglePersonPage} />
           <Route exact path='/search' component={NoSearchResults} />
           <Route exact path='/search/:query' component={SearchResults} />
 
@@ -42,6 +40,7 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path='/create-account' component={CreateAccount} />
           <Route exact path='/my-list' component={MyList} />
+
         </Switch>
       </Router>
     </Provider>

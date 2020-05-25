@@ -1,33 +1,31 @@
 import React from 'react';
 import { Pagination as RSPagination, PaginationItem, PaginationLink, Container } from 'reactstrap';
 
-const Pagination = props => {
+const Pagination = ({ changePage, numPages, totalResults, pageNumber, totalPages }) => {
     const pageNumbers = [];
 
-    for (let i = 0; i < props.totalPages; i++) {
+    for (let i = 0; i < totalPages; i++) {
         pageNumbers.push([i + 1]);
     }
-
-
 
     return (
         <Container className="pagination-container my-5">
             <div className="pagination-wrap">
                 <RSPagination>
                     <PaginationItem>
-                        <PaginationLink first onClick={() => props.setPage(1)} href='#1' />
+                        <PaginationLink first onClick={() => changePage(1)} href='#1' disabled={pageNumber === 1 && true} />
                     </PaginationItem>
                     <PaginationItem>
-                        <PaginationLink previous onClick={props.prevPage} disabled={props.pageNumber === 1 && true} />
+                        <PaginationLink previous onClick={() => changePage('prev')} disabled={pageNumber === 1 && true} />
                     </PaginationItem>
                     <div className="scroller">
                         {pageNumbers.map(page => (
                             <PaginationItem
                                 id={page}
                                 key={page}
-                                active={props.pageNumber.toString() === page.toString() && true}
+                                active={pageNumber.toString() === page.toString() && true}
                             >
-                                <PaginationLink onClick={() => props.setPage(page)}>
+                                <PaginationLink onClick={() => changePage(page)}>
                                     {page}
                                 </PaginationLink>
                             </PaginationItem>
@@ -35,23 +33,22 @@ const Pagination = props => {
                         }
                     </div>
                     <PaginationItem>
-                        <PaginationLink next onClick={() => props.nextPage()} />
+                        <PaginationLink next onClick={() => changePage('next')} disabled={pageNumber === numPages && true} />
                     </PaginationItem>
                     <PaginationItem>
-                        <PaginationLink last
-                            onClick={() => props.setPage(props.numPages)}
-                            href={`#${props.numPages}`}
+                        <PaginationLink last disabled={pageNumber === numPages && true}
+                            onClick={() => changePage(numPages)}
+                            href={`#${numPages}`}
                         />
                     </PaginationItem>
-                </RSPagination >
+                </RSPagination>
             </div>
-            {props.numPages !== 0 && <div>
-                <div className='bold mt-2 text-center'>  Pages: {props.numPages}</div>
-                <div className='bold text-center'> Results: {props.totalResults}</div>
+            {numPages !== 0 && <div>
+                <div className='bold mt-2 text-center'>  Pages: {numPages}</div>
+                <div className='bold text-center'> Results: {totalResults}</div>
             </div>
             }
-        </Container >
-
+        </Container>
     )
 }
 
