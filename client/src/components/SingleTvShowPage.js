@@ -1,9 +1,12 @@
 import React from 'react';
+import SingleItemHeader from './SingleItemHeader'
 
 
 const TvShowPage = () => {
     return (
-        <div>single tv show</div>
+        <div>
+            <SingleItemHeader />
+        </div>
     )
 }
 

@@ -1,4 +1,4 @@
-import { GET_MOVIES_BY_TITLE, GET_ALL_TRENDING_MOVIES } from '../actions/types';
+import { GET_MOVIES_BY_ID, GET_ALL_TRENDING_MOVIES } from '../actions/types';
 
 const initialState = {
     trendingMovies: '',
@@ -15,7 +15,7 @@ export default function (state = initialState, action) {
                 trendingMovies: action.payload,
                 trendingMoviesAreLoaded: action.trendingMoviesAreLoaded
             }
-        case GET_MOVIES_BY_TITLE:
+        case GET_MOVIES_BY_ID:
             return {
                 ...state,
                 movies: action.payload,

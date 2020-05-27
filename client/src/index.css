@@ -6,6 +6,10 @@
     font-weight: 600;
 }
 
+.flex {
+    display: flex;
+}
+
 /* Navbar */
 
 .logo-wrap {
@@ -128,3 +132,63 @@
 .pagination-wrap {
     max-width: 80%;
 }
+
+/* Single movie / TvShow page */
+.single-item-image-wrap {
+    min-height: 400px;
+    background-color: rgba(68, 131, 156, 0.7)
+}
+
+.single-item-image {
+    width: 250px;
+    min-height: 400px;
+    background: yellow;
+    border-radius: 15px;
+}
+
+.single-wrap-one {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.production-image {
+    margin: 20px 0px;
+    min-width: 80px;
+    max-width: 80px;
+    min-height: 80px;
+    border-radius: 10px;
+    background: red;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+/* person card */
+.person-card {
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* single page videos */
+.trailer-wrap {
+    background: red;
+    padding: 20px 0px 20px 15px;
+
+}
+
+.trailer {
+    width: 420px;
+    height: 220px;
+}
+
+
+
+
+/* div {
+    border: 1px solid black;
+} */
