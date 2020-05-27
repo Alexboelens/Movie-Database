@@ -4,6 +4,7 @@ import { getMoviesById } from '../actions/movieActions';
 import SingleItemHeader from './SingleItemHeader';
 import SingleItemCast from './SingleItemCast';
 import SingleItemVideos from './SingleItemVideos';
+import SingleSimilarMovies from './SingleSimilarMovies';
 
 
 
@@ -16,6 +17,7 @@ const SingleMoviePage = () => {
             <SingleItemVideos
                 mainTitle='Videos'
             />
+            <SingleSimilarMovies />
         </div>
     )
 }

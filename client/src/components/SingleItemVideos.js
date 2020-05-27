@@ -13,18 +13,18 @@ const SingleItemVideos = ({ mainTitle, videoTitle }) => {
                 </Row>
                 <Row className='trailer-wrap'>
                     <Col md='4' className='scroller'>
-                        <div>
-                            <iframe
-                                className='trailer'
-                                title={videoTitle}
-                                allowFullScreen
-                                mozallowfullscreen="mozallowfullscreen"
-                                msallowfullscreen="msallowfullscreen"
-                                oallowfullscreen="oallowfullscreen"
-                                webkitallowfullscreen="webkitallowfullscreen"
-                                src="https://www.youtube.com/embed/sowGYbxTPgU">
-                            </iframe>
-                        </div>
+
+                        <iframe
+                            className='trailer'
+                            title={videoTitle}
+                            allowFullScreen
+                            mozallowfullscreen="mozallowfullscreen"
+                            msallowfullscreen="msallowfullscreen"
+                            oallowfullscreen="oallowfullscreen"
+                            webkitallowfullscreen="webkitallowfullscreen"
+                            src="https://www.youtube.com/embed/sowGYbxTPgU">
+                        </iframe>
+
 
 
 
