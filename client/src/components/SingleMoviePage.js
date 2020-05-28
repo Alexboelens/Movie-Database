@@ -5,6 +5,9 @@ import SingleItemHeader from './SingleItemHeader';
 import SingleItemCast from './SingleItemCast';
 import SingleItemVideos from './SingleItemVideos';
 import SingleSimilarMovies from './SingleSimilarMovies';
+import SingleRecommendations from './SingleRecommendations';
+import SingleReviews from './SingleReviews';
+
 
 
 
@@ -17,7 +20,18 @@ const SingleMoviePage = () => {
             <SingleItemVideos
                 mainTitle='Videos'
             />
-            <SingleSimilarMovies />
+            <SingleSimilarMovies
+                mainTitle='Similar Movies'
+            />
+            <SingleRecommendations
+                mainTitle='Recommendations'
+            />
+
+            <SingleReviews
+                userName='test username'
+            />
+
+
         </div>
     )
 }

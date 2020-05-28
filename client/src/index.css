@@ -175,20 +175,38 @@
 }
 
 /* single page videos */
-.trailer-wrap {
-    background: red;
-    padding: 20px 0px 20px 15px;
-
-}
-
 .trailer {
-    width: 420px;
-    height: 220px;
+    min-width: 520px;
+    height: 300px;
 }
 
+/* single page recommendations */
 
-
-
-/* div {
+.wide-item-box {
+    min-width: 300px;
+    height: 150px;
     border: 1px solid black;
-} */
+    border-radius: 10px;
+    margin: 0px 52px 0px 0px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 8px 8px 7px rgb(56, 60, 61);
+}
+
+/* reviews */
+
+.review-wrap {
+    border: 1px solid black;
+    box-shadow: 8px 8px 7px rgb(56, 60, 61);
+}
+
+.load-more {
+    color: dodgerblue;
+    font-weight: 600;
+}
+
+.load-more:hover {
+    cursor: pointer;
+    color: darkblue;
+}

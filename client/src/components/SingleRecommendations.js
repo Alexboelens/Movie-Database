@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import WideBox from './WideBox';
 import noImage from './images/no-movie-image.png';
+import WideBox from './WideBox';
 
 
-const SingleSimilarMovies = ({ mainTitle }) => {
+const SingleRecommendations = ({ mainTitle }) => {
     return (
-        <Container>
+        <Container className='my-5'>
             <Row>
                 <Col>
                     <h3>{mainTitle}</h3>
@@ -16,10 +16,8 @@ const SingleSimilarMovies = ({ mainTitle }) => {
                 <Col md='4' className='scroller'>
 
                     <WideBox
-                        link=''
-                        image=''
-                        noImage={noImage}
                         title='movie name'
+                        noImage={noImage}
                     />
 
 
@@ -33,4 +31,4 @@ const SingleSimilarMovies = ({ mainTitle }) => {
 
 }
 
-export default SingleSimilarMovies;
+export default SingleRecommendations;

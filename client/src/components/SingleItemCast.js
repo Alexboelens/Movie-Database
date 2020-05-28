@@ -4,7 +4,7 @@ import noImage from '../components/images/no-person-image.png'
 
 const SingleItemCast = ({ mainTitle }) => {
     return (
-        <Container className='my-5' fluid={true}>
+        <Container className='my-5'>
             <Row>
                 <Col>
                     <h3>{mainTitle}</h3>
