@@ -10,6 +10,10 @@
     display: flex;
 }
 
+.opacity-wrap {
+    background-color: rgba(10, 10, 10, 0.8);
+}
+
 /* Navbar */
 
 .logo-wrap {
@@ -25,7 +29,7 @@
 /* home header */
 .header-image {
     background-image: url('./components/images/headerImage.png');
-    background-position: top;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -135,14 +139,18 @@
 
 /* Single movie / TvShow page */
 .single-item-image-wrap {
-    min-height: 400px;
-    background-color: rgba(68, 131, 156, 0.7)
+    min-height: 450px;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .single-item-image {
     width: 250px;
     min-height: 400px;
-    background: yellow;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 15px;
 }
 
@@ -152,18 +160,10 @@
     align-items: center;
 }
 
-.production-image {
-    margin: 20px 0px;
-    min-width: 80px;
-    max-width: 80px;
-    min-height: 80px;
-    border-radius: 10px;
-    background: red;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.tagline {
+    color: rgb(143, 139, 139);
+    font-style: italic;
 }
-
 
 /* person card */
 .person-card {
@@ -209,4 +209,21 @@
 .load-more:hover {
     cursor: pointer;
     color: darkblue;
+}
+
+
+
+
+.red {
+    border: 1px solid black;
+    min-height: 500px;
+}
+
+.yellow {
+    border: 1px solid red;
+    min-height: 500px;
+}
+
+.test {
+    min-height: 500px;
 }

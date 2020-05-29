@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 
-const SearchResultsListItem = props => {
+const SearchResultsListItem = ({ item, title, content, noImage }) => {
 
-    const renderLink = (item) => {
+    const renderLink = item => {
         if (item.media_type === 'person') {
             return `/people/${item.id}`
         } else if (item.media_type === 'tv') {
@@ -14,7 +14,7 @@ const SearchResultsListItem = props => {
         }
     }
 
-    const renderImages = (item) => {
+    const renderImages = item => {
         if (item.media_type === 'person' && item.profile_path !== null) {
             return item.profile_path;
         } else if (item.media_type === 'tv' && item.profile_path !== null) {
@@ -24,7 +24,7 @@ const SearchResultsListItem = props => {
         }
     }
 
-    const renderDate = (item) => {
+    const renderDate = item => {
         if (item.media_type === 'person' && item.known_for_department) {
             return item.known_for_department !== null && item.known_for_department;
         } else if (item.media_type === 'tv' && item.first_air_date) {
@@ -37,8 +37,8 @@ const SearchResultsListItem = props => {
     return (
         <Container className='list-item-wrap'>
             <Row>
-                <Col xs='2' lg='1' className='list-item-box1 mx-3' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${renderImages(props.item)}), url(${props.noImage})` }}>
-                    <Link to={renderLink(props.item)}>
+                <Col xs='2' lg='1' className='list-item-box1 mx-3' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${renderImages(item)}), url(${noImage})` }}>
+                    <Link to={renderLink(item)}>
                         <div className='image-link'>
                         </div>
                     </Link>
@@ -46,16 +46,16 @@ const SearchResultsListItem = props => {
                 <Col>
                     <Row>
                         <Col className='bold'>
-                            <Link to={renderLink(props.item)} id='link'>
-                                {props.title}
+                            <Link to={renderLink(item)} id='link'>
+                                {title}
                             </Link>
                         </Col>
                     </Row>
                     <Row>
-                        <Col className='date'>{renderDate(props.item)}</Col>
+                        <Col className='date'>{renderDate(item)}</Col>
                     </Row>
                     <Row>
-                        <Col className='overflow pt-4'>{props.content}</Col>
+                        <Col className='overflow pt-4'>{content}</Col>
                     </Row>
                 </Col>
             </Row>
