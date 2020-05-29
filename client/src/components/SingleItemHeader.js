@@ -23,12 +23,15 @@ const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres,
                             <Row>
                                 <Col className='flex mt-3 text-warning'>
                                     <h1 className='mr-2'>{title}</h1>
-                                    <h1>{`(${year})`}</h1>
+                                    <h1>{`(${year && year.split('-')[0]})`}</h1>
                                 </Col>
+                            </Row>
+                            <Row>
                                 <Col>
-                                    <p className='text-muted'>{releaseDate}</p>
-
+                                    <p className='text-muted'>{releaseDate && releaseDate.split('-').reverse().join('-')}</p>
                                 </Col>
+                            </Row>
+                            <Row>
                                 <Col className='flex'>
                                     <div>{renderRuntime(runTime)}</div>
                                     <ul className='flex'>
@@ -37,10 +40,14 @@ const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres,
                                         ))}
                                     </ul>
                                 </Col>
+                            </Row>
+                            <Row>
                                 <Col className='mt-2'>
                                     <p>Status: {status}</p>
                                     <div></div>
                                 </Col>
+                            </Row>
+                            <Row>
                                 <Col className='my-3'>
                                     <h4 className='tagline'>{tagLine}</h4>
                                     <div className='mt-3'>{overview}</div>
@@ -55,3 +62,7 @@ const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres,
 }
 
 export default SingleItemHeader;
+
+
+
+

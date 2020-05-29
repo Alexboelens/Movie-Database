@@ -24,8 +24,8 @@ const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
             <SingleItemHeader
                 backdrop={movies.backdrop_path !== null && `https://image.tmdb.org/t/p/original${movies.backdrop_path}`}
                 title={movies.title ? movies.title : movies.original_name}
-                year={movies.release_date && movies.release_date.split('-')[0]}
-                releaseDate={movies.release_date && movies.release_date.split('-').reverse().join('-')}
+                year={movies.release_date}
+                releaseDate={movies.release_date}
                 runTime={movies.runtime}
                 genres={movies.genres}
                 status={movies.status}
