@@ -34,7 +34,11 @@ const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
                 itemImage={movies.poster_path !== null && `https://image.tmdb.org/t/p/original${movies.poster_path}`}
             />
             <SingleItemCast
-                mainTitle='Top Billed Actors' />
+                mainTitle='Top Actors'
+                castArray={movies.credits.cast.length !== 0 && movies.credits.cast.slice(0, 6)}
+            />
+
+
             <SingleItemVideos
                 mainTitle='Videos'
             />

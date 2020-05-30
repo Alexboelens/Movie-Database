@@ -11,10 +11,11 @@ const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres,
         var hour = (num - minute) / 60;
         return `${hour}h ${minute}m`
     }
+
     return (
         <Container fluid={true}>
             <Row className='single-item-image-wrap text-light' style={{ backgroundImage: `url(${backdrop}), url(${banner})` }}>
-                <Col className="opacity-wrap" fluid={true}>
+                <Col className="opacity-wrap">
                     <Row className='pt-4'>
                         <Col xs='12' md='4' lg='3' className='single-wrap-one'>
                             <div className="single-item-image" style={{ backgroundImage: `url(${itemImage}), url(${noImage})` }}></div>
@@ -28,7 +29,7 @@ const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres,
                             </Row>
                             <Row>
                                 <Col>
-                                    <p className='text-muted'>{releaseDate && releaseDate.split('-').reverse().join('-')}</p>
+                                    <p className='release-date'>{releaseDate && releaseDate.split('-').reverse().join('-')}</p>
                                 </Col>
                             </Row>
                             <Row>
@@ -47,7 +48,7 @@ const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres,
                                     <div></div>
                                 </Col>
                             </Row>
-                            <Row>
+                            <Row className='mb-4'>
                                 <Col className='my-3'>
                                     <h4 className='tagline'>{tagLine}</h4>
                                     <div className='mt-3'>{overview}</div>
