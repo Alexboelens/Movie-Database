@@ -4,7 +4,8 @@ import WideBox from './WideBox';
 import noImage from './images/no-movie-image.png';
 
 
-const SingleSimilarMovies = ({ mainTitle }) => {
+const SingleSimilarMovies = ({ mainTitle, array }) => {
+    console.log(array)
     return (
         <Container>
             <Row>
@@ -13,14 +14,16 @@ const SingleSimilarMovies = ({ mainTitle }) => {
                 </Col>
             </Row>
             <Row className='trailer-wrap'>
-                <Col md='4' className='scroller'>
+                <Col className='scroller'>
+                    {array.map(item => (
+                        <WideBox
+                            link={`/movies/${item.id}`}
+                            image={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
+                            noImage={noImage}
+                            title={item.title ? item.title : item.original_title}
+                        />
+                    ))}
 
-                    <WideBox
-                        link=''
-                        image=''
-                        noImage={noImage}
-                        title='movie name'
-                    />
 
 
 

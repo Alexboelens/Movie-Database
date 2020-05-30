@@ -5,16 +5,14 @@ import SingleItemHeader from './SingleItemHeader';
 import SingleItemCast from './SingleItemCast';
 import SingleItemVideos from './SingleItemVideos';
 import SingleSimilarMovies from './SingleSimilarMovies';
-import SingleRecommendations from './SingleRecommendations';
 import SingleReviews from './SingleReviews';
 
 
 const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
-
+    const id = window.location.pathname.split('/')[2];
     useEffect(() => {
-        const id = window.location.pathname.split('/')[2];
         getMoviesById(id);
-    }, [getMoviesById])
+    }, [getMoviesById, id])
 
 
     console.log(movies)
@@ -42,13 +40,10 @@ const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
             <SingleItemVideos
                 mainTitle='Videos'
                 videoArray={movies.videos.results}
-
             />
             <SingleSimilarMovies
                 mainTitle='Similar Movies'
-            />
-            <SingleRecommendations
-                mainTitle='Recommendations'
+                array={movies.similar.results}
             />
 
             <SingleReviews

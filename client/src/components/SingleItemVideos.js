@@ -13,15 +13,11 @@ const SingleItemVideos = ({ mainTitle, videoArray }) => {
                 </Row>
                 <Row>
                     <Col className='scroller'>
-                        {videoArray.length !== 0 && videoArray.map(item => (
-                            <iframe
+                        {videoArray.length !== 0 && videoArray.map((item, index) => (
+                            <iframe key={index}
+                                allowFullScreen
                                 className='trailer'
                                 title={item.name}
-                                allowFullScreen
-                                mozallowfullscreen="mozallowfullscreen"
-                                msallowfullscreen="msallowfullscreen"
-                                oallowfullscreen="oallowfullscreen"
-                                webkitallowfullscreen="webkitallowfullscreen"
                                 src={item.key !== null && `https://www.youtube.com/embed/${item.key}`}>
                             </iframe>
                         ))}
