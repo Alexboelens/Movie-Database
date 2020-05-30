@@ -177,7 +177,7 @@
     font-style: italic;
 }
 
-/* person card */
+/* cast card */
 .person-card {
     width: 100%;
     height: 240px;
@@ -192,8 +192,8 @@
 
 /* single page videos */
 .trailer {
-    min-width: 520px;
-    height: 300px;
+    min-width: 470px;
+    height: 250px;
 }
 
 /* single page recommendations */

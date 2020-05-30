@@ -1,5 +1,4 @@
 import React from 'react';
-import SingleItemHeader from './SingleItemHeader'
 
 
 const TvShowPage = () => {

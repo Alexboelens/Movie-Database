@@ -39,9 +39,10 @@ const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
                 castArray={movies.credits.cast}
             />
 
-
             <SingleItemVideos
                 mainTitle='Videos'
+                videoArray={movies.videos.results}
+
             />
             <SingleSimilarMovies
                 mainTitle='Similar Movies'

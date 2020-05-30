@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 
 
-const SingleItemVideos = ({ mainTitle, videoTitle }) => {
+const SingleItemVideos = ({ mainTitle, videoArray }) => {
     return (
         <div>
             <Container className='my-5'>
@@ -13,54 +13,19 @@ const SingleItemVideos = ({ mainTitle, videoTitle }) => {
                 </Row>
                 <Row>
                     <Col className='scroller'>
-
-                        <iframe
-                            className='trailer'
-                            title={videoTitle}
-                            allowFullScreen
-                            mozallowfullscreen="mozallowfullscreen"
-                            msallowfullscreen="msallowfullscreen"
-                            oallowfullscreen="oallowfullscreen"
-                            webkitallowfullscreen="webkitallowfullscreen"
-                            src="https://www.youtube.com/embed/sowGYbxTPgU">
-                        </iframe>
-
-                        <iframe
-                            className='trailer'
-                            title={videoTitle}
-                            allowFullScreen
-                            mozallowfullscreen="mozallowfullscreen"
-                            msallowfullscreen="msallowfullscreen"
-                            oallowfullscreen="oallowfullscreen"
-                            webkitallowfullscreen="webkitallowfullscreen"
-                            src="https://www.youtube.com/embed/sowGYbxTPgU">
-                        </iframe>
-
-                        <iframe
-                            className='trailer'
-                            title={videoTitle}
-                            allowFullScreen
-                            mozallowfullscreen="mozallowfullscreen"
-                            msallowfullscreen="msallowfullscreen"
-                            oallowfullscreen="oallowfullscreen"
-                            webkitallowfullscreen="webkitallowfullscreen"
-                            src="https://www.youtube.com/embed/sowGYbxTPgU">
-                        </iframe>
-                        <iframe
-                            className='trailer'
-                            title={videoTitle}
-                            allowFullScreen
-                            mozallowfullscreen="mozallowfullscreen"
-                            msallowfullscreen="msallowfullscreen"
-                            oallowfullscreen="oallowfullscreen"
-                            webkitallowfullscreen="webkitallowfullscreen"
-                            src="https://www.youtube.com/embed/sowGYbxTPgU">
-                        </iframe>
-
-
-
-
-
+                        {videoArray.length !== 0 && videoArray.map(item => (
+                            <iframe
+                                className='trailer'
+                                title={item.name}
+                                allowFullScreen
+                                mozallowfullscreen="mozallowfullscreen"
+                                msallowfullscreen="msallowfullscreen"
+                                oallowfullscreen="oallowfullscreen"
+                                webkitallowfullscreen="webkitallowfullscreen"
+                                src={item.key !== null && `https://www.youtube.com/embed/${item.key}`}>
+                            </iframe>
+                        ))}
+                        {videoArray.length === 0 && <div>No videos added yet</div>}
                     </Col>
                 </Row>
             </Container>

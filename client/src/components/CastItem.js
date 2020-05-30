@@ -3,7 +3,7 @@ import noImage from './images/no-person-image.png';
 import { Container, Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-const CastItem = ({ name, image, title, array, content }) => {
+const CastItem = ({ title, array }) => {
     return (
         <Container>
             <Row className='mt-4'>
@@ -13,9 +13,7 @@ const CastItem = ({ name, image, title, array, content }) => {
             </Row>
             <Row className='mt-2'>
                 {array.map((item, index) => (
-
                     <Col xs='12' md='6' lg='4' className='cast-item-wrap py-3' key={index}>
-
                         <Row>
                             <Link to={`/people/${item.id}`}>
                                 <Col xs='4'>
@@ -31,14 +29,10 @@ const CastItem = ({ name, image, title, array, content }) => {
                                 </div>
                             </Col>
                         </Row>
-
                     </Col >
                 ))}
-
             </Row >
         </Container >
-
-
     )
 }
 
