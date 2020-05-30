@@ -35,7 +35,8 @@ const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
             />
             <SingleItemCast
                 mainTitle='Top Actors'
-                castArray={movies.credits.cast.length !== 0 && movies.credits.cast.slice(0, 6)}
+                topCast={movies.credits.cast.length !== 0 && movies.credits.cast.slice(0, 6)}
+                castArray={movies.credits.cast}
             />
 
 

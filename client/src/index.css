@@ -14,6 +14,10 @@
     display: flex;
 }
 
+.align-items-center {
+    align-items: center;
+}
+
 .opacity-wrap {
     background-color: rgba(10, 10, 10, 0.8);
 }
@@ -223,19 +227,36 @@
     color: darkblue;
 }
 
+/* cast page */
+.cast-item-image {
+    border: 1px solid black;
+    width: 100px;
+    height: 120px;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.cast-item-wrap {
+    border: 1px solid lightgray;
+}
+
+.cast-item-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 
 
+
+
+
+/* test delete later */
 
 .red {
-    border: 1px solid black;
-    min-height: 500px;
+    background: red;
 }
 
 .yellow {
-    border: 1px solid red;
-    min-height: 500px;
-}
-
-.test {
-    min-height: 500px;
+    background: yellow;
 }

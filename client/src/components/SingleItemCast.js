@@ -1,33 +1,31 @@
 import React from 'react';
 import { Card, CardTitle, CardText, CardBody, Container, Row, Col } from 'reactstrap';
 import noImage from '../components/images/no-person-image.png'
-import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
-const SingleItemCast = ({ mainTitle, castArray }) => {
-    console.log(castArray)
-
-    // const renderActors = arr => {
-    //     if (arr.length > 6) {
-    //         arr
-
-    //     }
-
-    // }
-
-
+const SingleItemCast = ({ mainTitle, castArray, topCast }) => {
+    const id = window.location.pathname.split('/')[2];
     return (
         <Container className='my-5'>
             <Row>
                 <Col>
-                    <h3>{mainTitle}</h3>
+                    <div className='flex'>
+                        <h3 className='mr-auto'>{mainTitle}</h3>
+                        {castArray.length > 6 &&
+                            <Link to={`/movies/${id}/cast`}><p className='pr-5 bold'>View All >></p></Link>
+                        }
+                    </div>
+
                 </Col>
             </Row>
             <Row className='scroller'>
-                {castArray.map(item => (
+                {topCast.map(item => (
                     <Col md='2' key={item.id}>
                         <Card>
-                            <div className="person-card" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${item.profile_path})` }}></div>
+                            <Link to={`/people/${item.id}`} >
+                                <div className="person-card" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${item.profile_path}), url(${noImage})` }}></div>
+                            </Link>
                             <CardBody className='actor-info'>
                                 <div className="actor-info">
                                     <CardTitle className='bold'>{item.name}</CardTitle>
@@ -38,25 +36,9 @@ const SingleItemCast = ({ mainTitle, castArray }) => {
                         </Card>
                     </Col>
                 ))}
-
-
-
-
             </Row>
-        </Container >
-
-
+        </Container>
     )
 }
 
 export default SingleItemCast;
-
-{/* <Col md='2'>
- // <Card>
-//     <div className="person-card" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${profile_path}), url(${noImage})` }}></div>
-//     <CardBody>
-//         <CardTitle>{actorName}</CardTitle>
-//         <CardText>{movieRole}</CardText>
-//     </CardBody>
-// </Card>
- </Col> */}

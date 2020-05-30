@@ -5,7 +5,7 @@ import SingleItemHeader from './SingleItemHeader'
 const TvShowPage = () => {
     return (
         <div>
-            <SingleItemHeader />
+            tv show page
         </div>
     )
 }

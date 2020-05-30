@@ -9,6 +9,7 @@ import People from './components/People';
 import SingleTvShowPage from './components/SingleTvShowPage';
 import SingleMoviePage from './components/SingleMoviePage';
 import SinglePersonPage from './components/SinglePersonPage';
+import MovieCast from './components/MovieCast';
 import Home from './components/Home';
 import Login from './components/Login';
 import NoSearchResults from './components/NoSearchResult';
@@ -28,6 +29,7 @@ function App() {
           <Route exact path='/' component={Home} />
           <Route exact path='/movies' component={Movies} />
           <Route exact path='/movies/:id' component={SingleMoviePage} />
+          <Route exact path='/movies/:id/cast' component={MovieCast} />
           <Route exact path='/tv-shows' component={TvShows} />
           <Route exact path='/tv-shows/:id' component={SingleTvShowPage} />
           <Route exact path='/people' component={People} />
