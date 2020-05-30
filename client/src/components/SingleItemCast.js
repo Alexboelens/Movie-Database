@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardTitle, CardText, CardBody, Container, Row, Col } from 'reactstrap';
+import { Card, CardText, CardBody, Container, Row, Col } from 'reactstrap';
 import noImage from '../components/images/no-person-image.png'
 import { Link } from 'react-router-dom';
 

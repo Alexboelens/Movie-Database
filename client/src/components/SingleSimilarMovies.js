@@ -5,7 +5,6 @@ import noImage from './images/no-movie-image.png';
 
 
 const SingleSimilarMovies = ({ mainTitle, array }) => {
-    console.log(array)
     return (
         <Container>
             <Row>
@@ -17,18 +16,14 @@ const SingleSimilarMovies = ({ mainTitle, array }) => {
                 <Col className='scroller'>
                     {array.map(item => (
                         <WideBox
+                            key={item.id}
                             link={`/movies/${item.id}`}
                             image={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
                             noImage={noImage}
                             title={item.title ? item.title : item.original_title}
                         />
                     ))}
-
-
-
-
-
-
+                    {array.length === 0 && <div className='text-info'>No similar movies added for this title.</div>}
                 </Col>
             </Row>
         </Container>

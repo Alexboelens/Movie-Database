@@ -12,7 +12,7 @@ const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
     const id = window.location.pathname.split('/')[2];
     useEffect(() => {
         getMoviesById(id);
-    }, [getMoviesById, id])
+    }, [getMoviesById, id, moviesAreLoaded])
 
 
     console.log(movies)
