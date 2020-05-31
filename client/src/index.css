@@ -263,3 +263,19 @@
 .person-container {
     border-bottom: 3px solid lightgray;
 }
+
+/* single person roles component */
+.roles-wrap {
+    display: flex;
+    width: 100%;
+    border: 1px solid rgb(163, 161, 161);
+}
+
+.roles-image {
+    width: 140px;
+    height: 230px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-right: 1px solid rgb(163, 161, 161);
+}

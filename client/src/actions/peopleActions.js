@@ -15,7 +15,7 @@ export const getTrendingPeople = () => dispatch => {
 }
 
 export const getPersonById = id => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=${key}&language=en-US`)
+    axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=${key}&append_to_response=movie_credits`)
         .then(res => {
             dispatch({
                 type: GET_PERSON_BY_ID,

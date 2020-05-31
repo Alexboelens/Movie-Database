@@ -29,10 +29,10 @@ const CastItem = ({ title, array }) => {
                                 </div>
                             </Col>
                         </Row>
-                    </Col >
+                    </Col>
                 ))}
-            </Row >
-        </Container >
+            </Row>
+        </Container>
     )
 }
 
