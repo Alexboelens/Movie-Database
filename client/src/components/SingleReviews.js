@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Container, Button, Row, Col } from 'reactstrap';
 
 
-
 const SingleReviews = ({ reviewArray, mainTitle }) => {
     const [open, setOpen] = useState(false)
 
@@ -19,7 +18,7 @@ const SingleReviews = ({ reviewArray, mainTitle }) => {
                 {reviewArray.length === 0 &&
                     <Row className='mt-3 mb-5'>
                         <Col>
-                            <p>No reviews added for this movie.</p>
+                            <p>No reviews added for this title.</p>
                         </Col>
                     </Row>
                 }

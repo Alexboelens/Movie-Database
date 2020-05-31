@@ -15,8 +15,6 @@ const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
         getTvShowById(id)
     }, [getTvShowById, id])
 
-    console.log(tvShow)
-
     return (
         <div>
             {tvShowIsLoaded &&
@@ -43,6 +41,11 @@ const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
                         castArray={tvShow.credits.cast}
                     />
 
+                    <SingleItemVideos
+                        mainTitle='Videos'
+                        videoArray={tvShow.videos.results}
+                    />
+
                     {/* seasons */}
 
 
@@ -53,7 +56,10 @@ const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
                         array={tvShow.similar.results}
                     />
 
-
+                    <SingleReviews
+                        mainTitle='Reviews'
+                        reviewArray={tvShow.reviews.results}
+                    />
                 </div>
             }
 
