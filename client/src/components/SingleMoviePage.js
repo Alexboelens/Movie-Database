@@ -4,18 +4,16 @@ import { getMoviesById } from '../actions/movieActions';
 import SingleItemHeader from './SingleItemHeader';
 import SingleItemCast from './SingleItemCast';
 import SingleItemVideos from './SingleItemVideos';
-import SingleSimilarMovies from './SingleSimilarMovies';
+import SingleSimilar from './SingleSimilar';
 import SingleReviews from './SingleReviews';
 
 
 const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
     const id = window.location.pathname.split('/')[2];
+
     useEffect(() => {
         getMoviesById(id);
     }, [getMoviesById, id, moviesAreLoaded])
-
-
-    console.log(movies)
 
     return (<div>
         {moviesAreLoaded && <div>
@@ -32,6 +30,7 @@ const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
                 itemImage={movies.poster_path !== null && `https://image.tmdb.org/t/p/original${movies.poster_path}`}
             />
             <SingleItemCast
+                type='movies'
                 mainTitle='Top Actors'
                 topCast={movies.credits.cast.length !== 0 && movies.credits.cast.slice(0, 6)}
                 castArray={movies.credits.cast}
@@ -41,23 +40,19 @@ const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
                 mainTitle='Videos'
                 videoArray={movies.videos.results}
             />
-            <SingleSimilarMovies
+
+            <SingleSimilar
+                link='movies'
                 mainTitle='Similar Movies'
                 array={movies.similar.results}
             />
 
             <SingleReviews
-                userName='test username'
+                mainTitle='Reviews'
+                reviewArray={movies.reviews.results}
             />
-
-
-
         </div>}
-
-
     </div>
-
-
     )
 }
 

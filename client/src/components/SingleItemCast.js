@@ -4,7 +4,7 @@ import noImage from '../components/images/no-person-image.png'
 import { Link } from 'react-router-dom';
 
 
-const SingleItemCast = ({ mainTitle, castArray, topCast }) => {
+const SingleItemCast = ({ mainTitle, castArray, topCast, type }) => {
     const id = window.location.pathname.split('/')[2];
     return (
         <Container className='my-5'>
@@ -13,7 +13,7 @@ const SingleItemCast = ({ mainTitle, castArray, topCast }) => {
                     <div className='flex'>
                         <h3 className='mr-auto'>{mainTitle}</h3>
                         {castArray.length > 6 &&
-                            <Link to={`/movies/${id}/cast`}><p className='pr-5 bold'>View All >></p></Link>
+                            <Link to={`/${type}/${id}/cast`}><p className='pr-5 bold'>View All >></p></Link>
                         }
                     </div>
                 </Col>

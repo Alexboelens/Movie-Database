@@ -1,31 +1,27 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux';
-import { getMoviesById } from '../actions/movieActions'
+import { getTvShowById } from '../actions/tvShowActions'
 import CastItem from './CastItem';
 
 
-const MovieCast = ({ movies, moviesAreLoaded, getMoviesById }) => {
+const TvShowCast = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
     const id = window.location.pathname.split('/')[2];
 
-    console.log(movies)
-
     useEffect(() => {
-        getMoviesById(id)
-    }, [getMoviesById, id])
-
+        getTvShowById(id)
+    }, [getTvShowById, id])
 
     return (
         <div>
-            {moviesAreLoaded &&
+            {tvShowIsLoaded &&
                 <div>
                     <CastItem
                         title='Cast'
-                        array={movies.credits.cast}
+                        array={tvShow.credits.cast}
                     />
-
                     <CastItem
                         title='Crew'
-                        array={movies.credits.crew}
+                        array={tvShow.credits.crew}
                     />
                 </div>
             }
@@ -34,9 +30,9 @@ const MovieCast = ({ movies, moviesAreLoaded, getMoviesById }) => {
 }
 
 const mapStateToProps = state => ({
-    movies: state.movies.movies,
-    moviesAreLoaded: state.movies.moviesAreLoaded
+    tvShow: state.tvShows.tvShow,
+    tvShowIsLoaded: state.tvShows.tvShowIsLoaded
 })
 
 
-export default connect(mapStateToProps, { getMoviesById })(MovieCast);
+export default connect(mapStateToProps, { getTvShowById })(TvShowCast);

@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 const SearchBar = ({ history }) => {
     const [search, setSearch] = useState('');
 
-
     const handleChange = e => {
         setSearch(e.target.value)
     }

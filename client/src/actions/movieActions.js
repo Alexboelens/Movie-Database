@@ -14,7 +14,7 @@ export const getTrendingMovies = () => dispatch => {
 }
 
 export const getMoviesById = id => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=videos,images,reviews,similar,recommendations,credits`)
+    axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=videos,images,reviews,similar,credits`)
         .then(res => {
             dispatch({
                 type: GET_MOVIES_BY_ID,

@@ -4,7 +4,15 @@ import WideBox from './WideBox';
 import noImage from './images/no-movie-image.png';
 
 
-const SingleSimilarMovies = ({ mainTitle, array }) => {
+const SingleSimilar = ({ mainTitle, array, link }) => {
+    const renderImage = item => {
+        if (item.backdrop_path === null) {
+            return item.poster_path;
+        } else {
+            return item.backdrop_path;
+        }
+    }
+
     return (
         <Container>
             <Row>
@@ -17,18 +25,18 @@ const SingleSimilarMovies = ({ mainTitle, array }) => {
                     {array.map(item => (
                         <WideBox
                             key={item.id}
-                            link={`/movies/${item.id}`}
-                            image={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
-                            noImage={noImage}
+                            link={`/${link}/${item.id}`}
+                            image={`https://image.tmdb.org/t/p/original${renderImage(item)}`}
                             title={item.title ? item.title : item.original_title}
+                            name={item.name ? item.name : item.original_name}
+                            noImage={noImage}
                         />
                     ))}
-                    {array.length === 0 && <div className='text-info'>No similar movies added for this title.</div>}
+                    {array.length === 0 && <div>No similar movies added for this title.</div>}
                 </Col>
             </Row>
         </Container>
     )
-
 }
 
-export default SingleSimilarMovies;
+export default SingleSimilar;

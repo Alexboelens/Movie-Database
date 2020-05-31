@@ -4,7 +4,7 @@ import noImage from './images/no-movie-image.png';
 import banner from './images/moviebanner.png';
 
 
-const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres, status, tagLine, overview, itemImage }) => {
+const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres, status, tagLine, overview, itemImage, lengthEpisodes, numSeasons, numEpisodes }) => {
 
     const renderRuntime = num => {
         var minute = num % 60;
@@ -34,7 +34,8 @@ const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres,
                             </Row>
                             <Row>
                                 <Col className='flex'>
-                                    <div>{renderRuntime(runTime)}</div>
+                                    {lengthEpisodes && <div>{lengthEpisodes}m</div>}
+                                    {runTime && <div>{renderRuntime(runTime)}</div>}
                                     <ul className='flex'>
                                         {genres.length !== 0 && genres.map((genre, index) => (
                                             <li key={index} className='mr-5'>{genre.name}</li>
@@ -42,6 +43,13 @@ const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres,
                                     </ul>
                                 </Col>
                             </Row>
+                            {numSeasons &&
+                                <Row>
+                                    <Col>
+                                        <p>Seasons: {numSeasons}</p>
+                                    </Col>
+                                </Row>
+                            }
                             <Row>
                                 <Col className='mt-2'>
                                     <p>Status: {status}</p>

@@ -16,7 +16,7 @@ const SearchResults = ({ getSearchResults, searchResults, searchResultsAreLoaded
         setPage(1)
     }
 
-    const changePage = (pageNum) => {
+    const changePage = pageNum => {
         const query = window.location.pathname.split('/')[2];
         if (pageNum === 'next') {
             setPage(page + 1)
@@ -34,7 +34,6 @@ const SearchResults = ({ getSearchResults, searchResults, searchResultsAreLoaded
         getSearchResults(query, page)
     }, [getSearchResults, page])
 
-    console.log(searchResults)
     return (
         <div>
             <SearchResultsSearchBar onClick={clearState} />

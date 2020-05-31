@@ -21,7 +21,7 @@ const SingleItemVideos = ({ mainTitle, videoArray }) => {
                                 src={item.key !== null && `https://www.youtube.com/embed/${item.key}`}>
                             </iframe>
                         ))}
-                        {videoArray.length === 0 && <div>No videos added yet</div>}
+                        {videoArray.length === 0 && <div>No videos added yet.</div>}
                     </Col>
                 </Row>
             </Container>
