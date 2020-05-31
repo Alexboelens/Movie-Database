@@ -13,7 +13,7 @@ const AppNavbar = () => {
 
     return (
         <div>
-            <Navbar color="dark" dark expand='sm' className='mb-5 navbar' id='navbar'>
+            <Navbar color="dark" dark expand='lg' className='mb-5 navbar' id='navbar'>
 
                 <div className='logo-wrap mr-5'>
                     <img src={icon} alt="logo" />
