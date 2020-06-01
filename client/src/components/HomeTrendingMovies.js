@@ -30,7 +30,9 @@ const HomeTrendingMovies = ({ trendingMovies, trendingMoviesAreLoaded, getTrendi
                                 noImage={noImage}
                                 image={movie.poster_path !== null && `https://image.tmdb.org/t/p/original${movie.poster_path}`}
                                 link={`movies/${movie.id}`}
-                                title={movie.name ? movie.name : movie.title}>
+                                title={movie.name ? movie.name : movie.title}
+                                className='title-text text-center'
+                            >
                             </Box>
                         ))
                     }

@@ -36,10 +36,6 @@ const SinglePersonHeader = ({ name, knownFor, birthday, placeOfBirth, image, bio
         }
     }
 
-
-    console.log(birthday)
-
-
     return (
         <Container fluid={true} className='my-5 person-container'>
             <Row>

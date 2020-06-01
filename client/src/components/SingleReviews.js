@@ -39,7 +39,7 @@ const SingleReviews = ({ reviewArray, mainTitle }) => {
                 <Container className='review-wrap mt-5 mb-3' key={item.id}>
                     <div>
                         <h5 className='bold pt-3 text-danger ml-4 pt-3'>Review by {item.author}</h5>
-                        <ul ul className='px-4 py-4' >
+                        <ul className='px-4 py-4' >
                             <li>{item.content}</li>
                         </ul>
                     </div>

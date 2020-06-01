@@ -30,7 +30,9 @@ const HomeTrendingPeople = ({ getTrendingPeople, trendingPeople, trendingPeopleA
                                 image={item.profile_path !== null && `https://image.tmdb.org/t/p/original${item.profile_path}`}
                                 key={item.id}
                                 link={`/people/${item.id}`}
-                                title={item.name}>
+                                title={item.name}
+                                className='title-text text-center'
+                            >
                             </Box>
                         })
                     }

@@ -1,6 +1,16 @@
-import { GET_ALL_TRENDING_MOVIES, GET_MOVIES_BY_ID } from './types';
 import axios from 'axios';
+import {
+    GET_MOVIES_BY_ID,
+    GET_ALL_TRENDING_MOVIES,
+    GET_MOVIES_NOW_PLAYING,
+    GET_MOVIES_POPULAR,
+    GET_MOVIES_TOP_RATED,
+    GET_MOVIES_UPCOMING
+} from './types';
+
 const key = '3c29d56bc6a6028be109cd46d895c48e'
+
+
 
 export const getTrendingMovies = () => dispatch => {
     axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`)
@@ -20,6 +30,50 @@ export const getMoviesById = id => dispatch => {
                 type: GET_MOVIES_BY_ID,
                 payload: res.data,
                 moviesAreLoaded: true
+            })
+        })
+}
+
+export const getMoviesNowPlaying = page => dispatch => {
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=${page}`)
+        .then(res => {
+            dispatch({
+                type: GET_MOVIES_NOW_PLAYING,
+                payload: res.data,
+                nowPlayingLoaded: true
+            })
+        })
+}
+
+export const getMoviesUpcoming = page => dispatch => {
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=${page}`)
+        .then(res => {
+            dispatch({
+                type: GET_MOVIES_UPCOMING,
+                payload: res.data,
+                upcomingLoaded: true
+            })
+        })
+}
+
+export const getMoviesTopRated = page => dispatch => {
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=${page}`)
+        .then(res => {
+            dispatch({
+                type: GET_MOVIES_TOP_RATED,
+                payload: res.data,
+                topRatedLoaded: true
+            })
+        })
+}
+
+export const getMoviesPopular = page => dispatch => {
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=${page}`)
+        .then(res => {
+            dispatch({
+                type: GET_MOVIES_POPULAR,
+                payload: res.data,
+                popularLoaded: true
             })
         })
 }

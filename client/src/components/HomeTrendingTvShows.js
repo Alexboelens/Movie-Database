@@ -30,7 +30,9 @@ const HomeTrendingTvShows = ({ getTrendingTvShows, trendingTvShows, trendingTvSh
                                 image={item.poster_path !== null && `https://image.tmdb.org/t/p/original${item.poster_path}`}
                                 key={item.id}
                                 link={`/tv/${item.id}`}
-                                title={item.name ? item.name : item.original_name}>
+                                title={item.name ? item.name : item.original_name}
+                                className='title-text text-center'
+                            >
                             </Box>
                         })
                     }
