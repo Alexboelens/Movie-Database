@@ -4,9 +4,9 @@ import { getMoviesById } from '../actions/movieActions';
 
 
 
-const Movies = () => {
+const TvTopRated = () => {
     return (
-        <div>movies page</div>
+        <div>tv top rated</div>
     )
 }
 
@@ -15,5 +15,5 @@ const mapStateToProps = state => ({
     moviesAreLoaded: state.movies.moviesAreLoaded
 })
 
-export default connect(mapStateToProps, { getMoviesById })(Movies);
+export default connect(mapStateToProps, { getMoviesById })(TvTopRated);
 
