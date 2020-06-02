@@ -21,8 +21,8 @@ const SinglePersonHeader = ({ name, knownFor, birthday, placeOfBirth, image, bio
     }
 
     const renderBiography = text => {
-        if (text === null) {
-            return 'No information added for this person';
+        if (text.length === 0 || text === null) {
+            return 'No information added for this person.';
         } else {
             return text;
         }

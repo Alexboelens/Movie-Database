@@ -1,55 +1,55 @@
 import React from 'react';
-import { Pagination as RSPagination, PaginationItem, PaginationLink, Container } from 'reactstrap';
+import { Button, Container, Row, Col } from 'reactstrap';
 
-const Pagination = ({ changePage, numPages, totalResults, pageNumber, totalPages }) => {
-    const pageNumbers = [];
 
-    for (let i = 0; i < totalPages; i++) {
-        pageNumbers.push([i + 1]);
-    }
-
+const Pagination = ({ page, totalResults, totalPages, changePage }) => {
     return (
-        <Container className="pagination-container my-5">
-            <div className="pagination-wrap">
-                <RSPagination>
-                    <PaginationItem>
-                        <PaginationLink first onClick={() => changePage(1)} href='#1' disabled={pageNumber === 1 && true} />
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink previous onClick={() => changePage('prev')} disabled={pageNumber === 1 && true} />
-                    </PaginationItem>
-                    <div className="scroller">
-                        {pageNumbers.map(page => (
-                            <PaginationItem
-                                id={page}
-                                key={page}
-                                active={pageNumber.toString() === page.toString() && true}
-                            >
-                                <PaginationLink onClick={() => changePage(page)}>
-                                    {page}
-                                </PaginationLink>
-                            </PaginationItem>
-                        ))
-                        }
+        <Container className='my-5'>
+            <Row>
+                <Col>
+                    <div className='flex justify-content-center align-items-center'>
+                        <Button onClick={() => changePage(1)}
+                            disabled={page === 1}
+                            color='primary'>
+                            First
+                        </Button>
+
+                        <Button onClick={() => changePage('prev')}
+                            disabled={page === 1}
+                            color='primary'
+                            className='ml-1'>
+                            Prev
+                        </Button>
+
+                        <div className='page-number-wrap'>
+                            <div className='mx-5 bold'>{page}</div>
+                        </div>
+
+                        <Button onClick={() => changePage('next')}
+                            disabled={page === totalPages && true}
+                            color='primary'
+                            className='mr-1'>
+                            Next
+                        </Button>
+
+                        <Button onClick={() => changePage(totalPages)}
+                            disabled={page === totalPages && true}
+                            color='primary'>
+                            Last
+                        </Button>
                     </div>
-                    <PaginationItem>
-                        <PaginationLink next onClick={() => changePage('next')} disabled={pageNumber === numPages && true} />
-                    </PaginationItem>
-                    <PaginationItem>
-                        <PaginationLink last disabled={pageNumber === numPages && true}
-                            onClick={() => changePage(numPages)}
-                            href={`#${numPages}`}
-                        />
-                    </PaginationItem>
-                </RSPagination>
-            </div>
-            {numPages !== 0 && <div>
-                <div className='bold mt-2 text-center'>  Pages: {numPages}</div>
-                <div className='bold text-center'> Results: {totalResults}</div>
-            </div>
-            }
+                </Col>
+            </Row>
+            <Row>
+                <Col className='text-center mt-5 bold'>
+                    <p>Pages: {totalPages}</p>
+                    <p>Results Found: {totalResults}</p>
+                </Col>
+            </Row>
         </Container>
     )
 }
 
 export default Pagination;
+
+

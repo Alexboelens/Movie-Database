@@ -54,11 +54,10 @@ const SearchResults = ({ getSearchResults, searchResults, searchResultsAreLoaded
                                 })}
                                 <div>
                                     <Pagination
+                                        page={page}
                                         totalPages={searchResults.total_pages}
-                                        pageNumber={page}
-                                        changePage={changePage}
-                                        numPages={searchResults.total_pages}
                                         totalResults={searchResults.total_results}
+                                        changePage={changePage}
                                     />
                                 </div>
                             </div>

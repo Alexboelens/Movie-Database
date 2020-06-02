@@ -46,8 +46,7 @@ const SingleReviews = ({ reviewArray, mainTitle }) => {
                 </Container>
             ))
             }
-            {
-                reviewArray.length > 1 &&
+            {reviewArray.length > 1 &&
                 <Container className='py-3 mb-5'>
                     <Button className='load-more' onClick={toggle}>{!open ? 'Load More Reviews' : 'Close'}</Button>
                 </Container>

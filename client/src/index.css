@@ -14,6 +14,14 @@
     display: flex;
 }
 
+.justify-content-center {
+    justify-content: center;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
 .opacity-wrap {
     background-color: rgba(10, 10, 10, 0.8);
 }
@@ -139,6 +147,10 @@
 
 .pagination-wrap {
     max-width: 80%;
+}
+
+.page-number-wrap {
+    min-width: 60px;
 }
 
 /* Single movie / TvShow page */

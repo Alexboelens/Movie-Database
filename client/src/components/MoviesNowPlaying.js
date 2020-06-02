@@ -4,24 +4,35 @@ import { getMoviesNowPlaying } from '../actions/movieActions';
 import { Container, Row, Col } from 'reactstrap'
 import noImage from './images/no-movie-image.png';
 import Box from './Box';
+import Pagination from './Pagination';
 
 
 
 const MoviesNowPlaying = ({ nowPlayingLoaded, nowPlayingMovies, getMoviesNowPlaying }) => {
-
     const [page, setPage] = useState(1);
 
     useEffect(() => {
         getMoviesNowPlaying(page);
     }, [getMoviesNowPlaying, page])
 
+    const changePage = async pageNum => {
+        if (pageNum === 'next') {
+            await setPage(page + 1);
+        } else if (pageNum === 'prev') {
+            await setPage(page - 1);
+        } else {
+            await setPage(pageNum);
+        }
+        getMoviesNowPlaying(page);
+        window.scrollTo({ top: 0, behavior: 'auto' });
+    }
 
     return (
         <div>
             {nowPlayingLoaded &&
                 <div>
                     <Container className='text-center mt-4 mb-5'>
-                        <h1>Now Playing</h1>
+                        <h1 onClick={changePage}>Now Playing</h1>
                     </Container>
 
                     <Container>
@@ -39,8 +50,14 @@ const MoviesNowPlaying = ({ nowPlayingLoaded, nowPlayingMovies, getMoviesNowPlay
                                 </Col>
                             ))}
                         </Row>
-
                     </Container>
+
+                    <Pagination
+                        page={page}
+                        totalPages={nowPlayingMovies.total_pages}
+                        totalResults={nowPlayingMovies.total_results}
+                        changePage={changePage}
+                    />
                 </div>
             }
         </div>
