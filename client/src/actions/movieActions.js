@@ -35,7 +35,7 @@ export const getMoviesById = id => dispatch => {
 }
 
 export const getMoviesNowPlaying = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=${page}`)
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=${page}&region=us`)
         .then(res => {
             dispatch({
                 type: GET_MOVIES_NOW_PLAYING,
@@ -45,8 +45,8 @@ export const getMoviesNowPlaying = page => dispatch => {
         })
 }
 
-export const getMoviesUpcoming = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=${page}`)
+export const getUpcomingMovies = page => dispatch => {
+    axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=${page}&region=us`)
         .then(res => {
             dispatch({
                 type: GET_MOVIES_UPCOMING,
@@ -56,8 +56,8 @@ export const getMoviesUpcoming = page => dispatch => {
         })
 }
 
-export const getMoviesTopRated = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=${page}`)
+export const getTopRatedMovies = page => dispatch => {
+    axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=${page}&region=us`)
         .then(res => {
             dispatch({
                 type: GET_MOVIES_TOP_RATED,
@@ -67,8 +67,8 @@ export const getMoviesTopRated = page => dispatch => {
         })
 }
 
-export const getMoviesPopular = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=${page}`)
+export const getPopularMovies = page => dispatch => {
+    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}&region=us`)
         .then(res => {
             dispatch({
                 type: GET_MOVIES_POPULAR,

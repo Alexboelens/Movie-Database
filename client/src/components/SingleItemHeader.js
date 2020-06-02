@@ -34,8 +34,8 @@ const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres,
                             </Row>
                             <Row>
                                 <Col className='flex'>
-                                    {lengthEpisodes && <div>{lengthEpisodes}m</div>}
-                                    {runTime && <div>{renderRuntime(runTime)}</div>}
+                                    {numEpisodes && <div>Episodes: {numEpisodes}</div>}
+                                    {runTime !== 0 && <div>{renderRuntime(runTime)}</div>}
                                     <ul className='flex'>
                                         {genres.length !== 0 && genres.map((genre, index) => (
                                             <li key={index} className='mr-5'>{genre.name}</li>

@@ -24,7 +24,6 @@ const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
                         title={tvShow.title ? tvShow.title : tvShow.original_name}
                         year={tvShow.first_air_date}
                         releaseDate={tvShow.first_air_date}
-                        lengthEpisodes={tvShow.episode_run_time}
                         numEpisodes={tvShow.number_of_episodes}
                         numSeasons={tvShow.number_of_seasons}
                         genres={tvShow.genres}

@@ -19,7 +19,7 @@ const SingleItemCast = ({ mainTitle, castArray, topCast, type }) => {
                 </Col>
             </Row>
             <Row className='scroller'>
-                {topCast.map(item => (
+                {topCast && topCast.length !== 0 ? topCast.map(item => (
                     <Col xs='6' sm='6' md='4' lg='2' key={item.id} className='mt-3'>
                         <Card>
                             <Link to={`/people/${item.id}`} >
@@ -33,7 +33,7 @@ const SingleItemCast = ({ mainTitle, castArray, topCast, type }) => {
                             </CardBody>
                         </Card>
                     </Col>
-                ))}
+                )) : <div className='ml-3'>No actors added yet for this title</div>}
             </Row>
         </Container>
     )
