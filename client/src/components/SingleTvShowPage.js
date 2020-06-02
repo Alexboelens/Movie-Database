@@ -15,11 +15,14 @@ const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
         getTvShowById(id)
     }, [getTvShowById, id])
 
+    console.log(tvShow)
+
     return (
         <div>
             {tvShowIsLoaded &&
                 <div>
                     <SingleItemHeader
+                        type='tv'
                         backdrop={tvShow.backdrop_path !== null && `https://image.tmdb.org/t/p/original${tvShow.backdrop_path}`}
                         title={tvShow.title ? tvShow.title : tvShow.original_name}
                         year={tvShow.first_air_date}
