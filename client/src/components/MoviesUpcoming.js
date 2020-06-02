@@ -7,7 +7,6 @@ import Box from './Box';
 import Pagination from './Pagination';
 
 
-
 const MoviesUpcoming = ({ upcomingLoaded, upcomingMovies, getUpcomingMovies }) => {
     const [page, setPage] = useState(1);
 
