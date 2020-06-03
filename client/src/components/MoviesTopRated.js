@@ -32,7 +32,7 @@ const MoviesTopRated = ({ topRatedLoaded, topRatedMovies, getTopRatedMovies }) =
             {topRatedLoaded &&
                 <div>
                     <Container className='text-center mt-4 mb-5'>
-                        <h1 onClick={changePage}>TopRated Movies</h1>
+                        <h1 onClick={changePage}>Top Rated Movies</h1>
                     </Container>
 
                     <Container>
@@ -45,6 +45,7 @@ const MoviesTopRated = ({ topRatedLoaded, topRatedMovies, getTopRatedMovies }) =
                                         link={`/movies/${item.id}`}
                                         title={item.title}
                                         className='text-center bold py-2'
+                                        releaseDate={item.release_date}
                                     >
                                     </Box>
                                 </Col>

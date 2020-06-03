@@ -45,8 +45,10 @@ const MoviesNowPlaying = ({ nowPlayingLoaded, nowPlayingMovies, getMoviesNowPlay
                                         link={`/movies/${item.id}`}
                                         title={item.title}
                                         className='text-center bold py-2'
+                                        releaseDate={item.release_date}
                                     >
                                     </Box>
+
                                 </Col>
                             ))}
                         </Row>

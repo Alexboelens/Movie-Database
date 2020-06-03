@@ -23,7 +23,7 @@ const SingleItemCast = ({ mainTitle, castArray, topCast, type }) => {
                     <Col xs='6' sm='6' md='4' lg='2' key={item.id} className='mt-3'>
                         <Card>
                             <Link to={`/people/${item.id}`} >
-                                <div className="person-card" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${item.profile_path}), url(${noImage})` }}></div>
+                                <div className="person-card" style={{ backgroundImage: item.profile_path !== null ? `url(https://image.tmdb.org/t/p/original${item.profile_path})` : `url(${noImage})` }}></div>
                             </Link>
                             <CardBody>
                                 <div className="actor-info">

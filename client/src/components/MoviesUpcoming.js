@@ -31,7 +31,7 @@ const MoviesUpcoming = ({ upcomingLoaded, upcomingMovies, getUpcomingMovies }) =
             {upcomingLoaded &&
                 <div>
                     <Container className='text-center mt-4 mb-5'>
-                        <h1 onClick={changePage}>Upcoming</h1>
+                        <h1 onClick={changePage}>Upcoming Movies</h1>
                     </Container>
 
                     <Container>
@@ -44,6 +44,7 @@ const MoviesUpcoming = ({ upcomingLoaded, upcomingMovies, getUpcomingMovies }) =
                                         link={`/movies/${item.id}`}
                                         title={item.title}
                                         className='text-center bold py-2'
+                                        releaseDate={item.release_date}
                                     >
                                     </Box>
                                 </Col>

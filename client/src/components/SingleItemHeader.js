@@ -27,41 +27,18 @@ const SingleItemHeader = ({ backdrop, title, year, releaseDate, runTime, genres,
                                     <h1>{`(${year && year.split('-')[0]})`}</h1>
                                 </Col>
                             </Row>
-                            <Row>
-                                <Col>
-                                    <p className='release-date'>{releaseDate && releaseDate.split('-').reverse().join('-')}</p>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col className='flex'>
-                                    {numEpisodes && <div>Episodes: {numEpisodes}</div>}
-                                    {type !== 'tv' && runTime !== 0 && <div>{renderRuntime(runTime)}</div>}
-                                    <ul className='flex'>
-                                        {genres.length !== 0 && genres.map((genre, index) => (
-                                            <li key={index} className='mr-5'>{genre.name}</li>
-                                        ))}
-                                    </ul>
-                                </Col>
-                            </Row>
-                            {numSeasons &&
-                                <Row>
-                                    <Col>
-                                        <p>Seasons: {numSeasons}</p>
-                                    </Col>
-                                </Row>
-                            }
-                            <Row>
-                                <Col className='mt-2'>
-                                    <p>Status: {status}</p>
-                                    <div></div>
-                                </Col>
-                            </Row>
-                            <Row className='mb-4'>
-                                <Col className='my-3'>
-                                    <h4 className='tagline'>{tagLine}</h4>
-                                    <div className='mt-3'>{overview}</div>
-                                </Col>
-                            </Row>
+                            <p className='release-date'>{releaseDate && releaseDate.split('-').reverse().join('-')}</p>
+                            {type !== 'tv' && runTime !== 0 && <p className='mr-3'>{renderRuntime(runTime)}</p>}
+                            <div className='flex'>
+                                {genres.length !== 0 && genres.map((genre, index) => (
+                                    <p key={index} className='mr-5'>{genre.name}</p>
+                                ))}
+                            </div>
+                            {numEpisodes && <p>Episodes: {numEpisodes}</p>}
+                            {numSeasons && <p>Seasons: {numSeasons}</p>}
+                            <p>Status: {status}</p>
+                            <h4 className='tagline'>{tagLine}</h4>
+                            <div className='mt-3'>{overview}</div>
                         </Col>
                     </Row>
                 </Col>
