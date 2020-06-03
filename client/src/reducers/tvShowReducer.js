@@ -8,13 +8,18 @@ import {
 } from '../actions/types'
 
 const initialState = {
-    tvShowIsLoaded: false,
     tvShow: '',
+    tvShowIsLoaded: false,
     trendingTvShows: '',
+    trendingTvShowsAreLoaded: false,
     tvShowsOnTv: '',
+    onTvLoaded: false,
     popularTvShows: '',
-    tvShowsAiringToday: '',
-    topRatedTvShows: ''
+    popularTvShowsLoaded: false,
+    airingTvShows: '',
+    airingTvShowsLoaded: false,
+    topRatedTvShows: '',
+    topRatedTvShowsLoaded: false
 
 
 
@@ -37,25 +42,25 @@ export default function (state = initialState, action) {
         case GET_TVSHOWS_AIRING_TODAY:
             return {
                 ...state,
-                tvShow: action.payload,
+                airingTvShows: action.payload,
                 airingTvShowsLoaded: action.airingTvShowsLoaded
             }
         case GET_TVSHOWS_ON_TV:
             return {
                 ...state,
-                tvShow: action.payload,
-                TvShowsOnTvLoaded: action.TvShowsOnTvLoaded
+                tvShowsOnTv: action.payload,
+                onTvLoaded: action.onTvLoaded
             }
         case GET_TVSHOWS_POPULAR:
             return {
                 ...state,
-                tvShow: action.payload,
+                popularTvShows: action.payload,
                 popularTvShowsLoaded: action.popularTvShowsLoaded
             }
         case GET_TVSHOWS_TOP_RATED:
             return {
                 ...state,
-                tvShow: action.payload,
+                topRatedTvShows: action.payload,
                 topRatedTvShowsLoaded: action.topRatedTvShowsLoaded
             }
         default:

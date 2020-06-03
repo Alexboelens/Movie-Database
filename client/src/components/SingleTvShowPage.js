@@ -15,8 +15,6 @@ const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
         getTvShowById(id)
     }, [getTvShowById, id])
 
-    console.log(tvShow)
-
     return (
         <div>
             {tvShowIsLoaded &&
@@ -47,10 +45,6 @@ const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
                         mainTitle='Videos'
                         videoArray={tvShow.videos.results}
                     />
-
-                    {/* seasons */}
-
-
 
                     <SingleSimilar
                         link='tv'

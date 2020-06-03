@@ -5,14 +5,6 @@ import noImage from './images/no-movie-image.png';
 
 
 const SingleSimilar = ({ mainTitle, array, link }) => {
-    const renderImage = item => {
-        if (item.backdrop_path === null) {
-            return item.poster_path;
-        } else {
-            return item.backdrop_path;
-        }
-    }
-
     return (
         <Container>
             <Row>
@@ -26,7 +18,7 @@ const SingleSimilar = ({ mainTitle, array, link }) => {
                         <WideBox
                             key={item.id}
                             link={`/${link}/${item.id}`}
-                            image={`https://image.tmdb.org/t/p/original${renderImage(item)}`}
+                            image={item.backdrop_path}
                             title={item.title ? item.title : item.original_title}
                             name={item.name ? item.name : item.original_name}
                             noImage={noImage}

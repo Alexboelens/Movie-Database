@@ -51,7 +51,7 @@ export const getTvShowsOnTv = page => dispatch => {
             dispatch({
                 type: GET_TVSHOWS_ON_TV,
                 payload: res.data,
-                TvShowsOnTvLoaded: true
+                onTvLoaded: true
             })
         })
 }

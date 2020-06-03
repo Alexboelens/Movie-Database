@@ -13,7 +13,6 @@ const MovieCast = ({ movies, moviesAreLoaded, getMoviesById }) => {
         getMoviesById(id)
     }, [getMoviesById, id])
 
-
     return (
         <div>
             {moviesAreLoaded &&
