@@ -28,6 +28,7 @@ const SinglePersonRoles = ({ mainTitle, array }) => {
                         </div>
                     </Col>
                 ))}
+                {array.length === 0 && <div className='ml-3 mt-3'>No info added for this person.</div>}
             </Row>
         </Container>
     )

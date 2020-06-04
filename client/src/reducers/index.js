@@ -5,7 +5,6 @@ import tvShowReducer from './tvShowReducer';
 import searchReducer from './searchReducer';
 
 
-
 export default combineReducers({
     movies: movieReducer,
     tvShows: tvShowReducer,

@@ -26,7 +26,7 @@ const SinglePersonPage = ({ person, getPersonById, personIsLoaded }) => {
                     />
 
                     <SinglePersonRoles
-                        mainTitle='Known for'
+                        mainTitle='Roles Played'
                         array={person.movie_credits.cast}
                     />
                 </div>

@@ -66,4 +66,4 @@ const SinglePersonHeader = ({ name, knownFor, birthday, placeOfBirth, image, bio
     )
 }
 
-export default SinglePersonHeader
+export default SinglePersonHeader;

@@ -26,6 +26,7 @@ const CastItem = ({ title, array }) => {
                                     <div className='italic pt-2'>{item.character}</div>
                                     {item.job && <div>{item.job}</div>}
                                     {item.department && <div>{item.department}</div>}
+                                    {item.known_for_department && <div>{item.known_for_department}</div>}
                                 </div>
                             </Col>
                         </Row>

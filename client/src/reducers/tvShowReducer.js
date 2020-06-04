@@ -20,10 +20,8 @@ const initialState = {
     airingTvShowsLoaded: false,
     topRatedTvShows: '',
     topRatedTvShowsLoaded: false
-
-
-
 }
+
 
 export default function (state = initialState, action) {
     switch (action.type) {

@@ -7,7 +7,6 @@ import Box from './Box';
 import Pagination from './Pagination';
 
 
-
 const TvAiringToday = ({ airingTvShows, airingTvShowsLoaded, getTvShowsAiringToday }) => {
     const [page, setPage] = useState(1);
 
@@ -24,7 +23,7 @@ const TvAiringToday = ({ airingTvShows, airingTvShowsLoaded, getTvShowsAiringTod
             await setPage(pageNum);
         }
         getTvShowsAiringToday(page);
-        window.scrollTo({ top: 0, behavior: 'auto' });
+        window.scrollTo({ top: 0 });
     }
 
     return (

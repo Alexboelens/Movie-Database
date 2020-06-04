@@ -11,7 +11,7 @@ import TvAiringToday from './components/TvAiringToday';
 import TvOnTv from './components/TvOnTv';
 import TvPopular from './components/TvPopular';
 import TvTopRated from './components/TvTopRated';
-import PeoplePopular from './components/PeoplePopular';
+import PopularPeople from './components/PopularPeople';
 import SingleTvShowPage from './components/SingleTvShowPage';
 import SingleMoviePage from './components/SingleMoviePage';
 import SinglePersonPage from './components/SinglePersonPage';
@@ -46,7 +46,7 @@ function App() {
           <Route exact path='/tv/top-rated' component={TvTopRated} />
           <Route exact path='/tv/:id' component={SingleTvShowPage} />
           <Route exact path='/tv/:id/cast' component={TvShowCast} />
-          <Route exact path='/people/popular' component={PeoplePopular} />
+          <Route exact path='/people/popular' component={PopularPeople} />
           <Route exact path='/people/:id' component={SinglePersonPage} />
           <Route exact path='/search' component={NoSearchResults} />
           <Route exact path='/search/:query' component={SearchResults} />

@@ -7,7 +7,6 @@ import Box from './Box';
 import Pagination from './Pagination';
 
 
-
 const MoviesPopular = ({ popularLoaded, popularMovies, getPopularMovies }) => {
     const [page, setPage] = useState(1);
 
@@ -24,7 +23,7 @@ const MoviesPopular = ({ popularLoaded, popularMovies, getPopularMovies }) => {
             await setPage(pageNum);
         }
         getPopularMovies(page);
-        window.scrollTo({ top: 0, behavior: 'auto' });
+        window.scrollTo({ top: 0 });
     }
 
     return (

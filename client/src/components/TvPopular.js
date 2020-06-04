@@ -7,7 +7,6 @@ import Box from './Box';
 import Pagination from './Pagination';
 
 
-
 const TvPopular = ({ popularTvShows, popularTvShowsLoaded, getPopularTvShows }) => {
     const [page, setPage] = useState(1);
 

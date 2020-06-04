@@ -1,4 +1,9 @@
-import { GET_ALL_TRENDING_PEOPLE, GET_PERSON_BY_ID } from '../actions/types';
+import {
+    GET_ALL_TRENDING_PEOPLE,
+    GET_PERSON_BY_ID,
+    GET_POPULAR_PEOPLE
+} from '../actions/types';
+
 
 const initialState = {
     trendingPeople: '',
@@ -20,6 +25,12 @@ export default function (state = initialState, action) {
                 ...state,
                 person: action.payload,
                 personIsLoaded: action.personIsLoaded
+            }
+        case GET_POPULAR_PEOPLE:
+            return {
+                ...state,
+                popularPeople: action.payload,
+                popularLoaded: action.popularLoaded
             }
         default:
             return state;
