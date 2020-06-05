@@ -7,7 +7,6 @@ import Box from './Box';
 import Pagination from './Pagination';
 
 
-
 const TvOnTv = ({ tvShowsOnTv, onTvLoaded, getTvShowsOnTv }) => {
     const [page, setPage] = useState(1);
 
