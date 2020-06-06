@@ -4,7 +4,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, Un
 import icon from '../components/images/logo.png';
 
 
-const AppNavbar = () => {
+const AppNavbar = ({ loadUser }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => {
