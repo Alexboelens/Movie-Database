@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import store from './store';
-import { loadUser } from './actions/authActions';
 import AppNavbar from './components/AppNavbar';
 import MoviesNowPlaying from './components/MoviesNowPlaying';
 import MoviesPopular from './components/MoviesPopular';
@@ -29,10 +28,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 function App() {
-
-  useEffect(() => {
-    store.dispatch(loadUser());
-  }, [])
 
   return (
     <Provider store={store}>

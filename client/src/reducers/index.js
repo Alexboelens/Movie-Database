@@ -11,7 +11,5 @@ export default combineReducers({
     movies: movieReducer,
     tvShows: tvShowReducer,
     people: peopleReducer,
-    search: searchReducer,
-    error: errorReducer,
-    auth: authReducer
+    search: searchReducer
 })

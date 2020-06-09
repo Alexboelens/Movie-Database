@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container, Alert } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { register } from '../actions/authActions';
 
-const CreateAccount = ({ history, register, error }) => {
-
-    // useEffect(() => {
-    //     if (error.id === 'REGISTER_FAIL') {
-    //         setState({ msg: error.msg.msg })
-    //         console.log(error)
-    //     } else {
-    //         setState({ msg: null })
-    //         console.log(error)
-    //     }
-    // }, [error])
+const CreateAccount = ({ history }) => {
 
     const [state, setState] = useState({
         name: '',
@@ -24,7 +12,7 @@ const CreateAccount = ({ history, register, error }) => {
         msg: null
     })
 
-    const { name, email, password, password2, msg } = state;
+    const { name, email, password, password2 } = state;
 
     const handleChange = e => {
         setState({
@@ -37,7 +25,7 @@ const CreateAccount = ({ history, register, error }) => {
         e.preventDefault();
         const newUser = { name, email, password };
         console.log(newUser)
-        register(newUser);
+
 
     }
 
@@ -47,7 +35,7 @@ const CreateAccount = ({ history, register, error }) => {
                 <h3 className='my-5'>Sign up for an account</h3>
             </Container>
 
-            {msg && <Alert color='danger'>{msg}</Alert>}
+
 
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
@@ -113,10 +101,6 @@ const CreateAccount = ({ history, register, error }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated,
-    error: state.error
-})
 
 
-export default withRouter(connect(mapStateToProps, { register })(CreateAccount));
+export default CreateAccount;
