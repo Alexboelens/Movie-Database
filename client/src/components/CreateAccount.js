@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Button, Form, FormGroup, Label, Input, Container, Alert } from 'reactstrap';
-import { withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 
 const CreateAccount = ({ history }) => {
 

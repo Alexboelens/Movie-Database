@@ -21,13 +21,14 @@ router.post('/', [
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
+
     const { name, email, password } = req.body;
 
     try {
         let user = await User.findOne({ email });
 
         if (user) {
-            res.status(400).json({ msg: 'User already exists' })
+            return res.status(400).json({ msg: 'User already exists' });
         }
         // create hashed password
         const hashedPassword = bcrypt.hashSync(password, 10);
@@ -37,8 +38,6 @@ router.post('/', [
             email,
             password: hashedPassword
         })
-
-
 
         await user.save();
 
@@ -54,7 +53,6 @@ router.post('/', [
             if (err) throw err;
             res.json({ token });
         })
-
 
     } catch (err) {
         console.error(err.message);

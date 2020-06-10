@@ -3,8 +3,6 @@ import movieReducer from './movieReducer';
 import peopleReducer from './peopleReducer';
 import tvShowReducer from './tvShowReducer';
 import searchReducer from './searchReducer';
-import authReducer from './authReducer';
-import errorReducer from './errorReducer';
 
 
 export default combineReducers({

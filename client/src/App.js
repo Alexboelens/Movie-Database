@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -27,7 +27,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 
-function App() {
+const App = () => {
 
   return (
     <Provider store={store}>

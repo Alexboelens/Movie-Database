@@ -5,18 +5,12 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Alexboelens/Movie-Database-ongoing.git"
+    "client": "npm start --prefix client",
+    "server": "nodemon server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\" "
   },
   "author": "Alex Boelens",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Alexboelens/Movie-Database-ongoing/issues"
-  },
-  "homepage": "https://github.com/Alexboelens/Movie-Database-ongoing#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.1",
