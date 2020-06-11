@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
+import AuthContext from '../context/auth/authContext';
+
 
 const Login = () => {
 
