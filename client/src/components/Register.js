@@ -1,14 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
+import AlertContext from '../context/alert/alertContext';
+import AuthContext from '../context/auth/authContext';
 
-const CreateAccount = ({ history }) => {
+const Register = () => {
+    const alertContext = useContext(AlertContext);
+    const authContext = useContext(AuthContext);
+
+    const { setAlert } = alertContext;
+    const { register, error, clearErrors } = authContext;
+
+    useEffect(() => {
+        if (error && error.includes('exists')) {
+            setAlert(error, 'danger');
+            clearErrors();
+        }
+
+    }, [error, clearErrors, setAlert])
 
     const [state, setState] = useState({
         name: '',
         email: '',
         password: '',
         password2: '',
-        msg: null
     })
 
     const { name, email, password, password2 } = state;
@@ -22,10 +36,17 @@ const CreateAccount = ({ history }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        const newUser = { name, email, password };
-        console.log(newUser)
-
-
+        if (name === '' || email === '' || password === '') {
+            setAlert('Please enter all fields', 'danger')
+        } else if (password !== password2) {
+            setAlert('Passwords do not match', 'danger')
+        } else {
+            register({
+                name,
+                email,
+                password
+            });
+        }
     }
 
     return (
@@ -33,8 +54,6 @@ const CreateAccount = ({ history }) => {
             <Container className='text-center'>
                 <h3 className='my-5'>Sign up for an account</h3>
             </Container>
-
-
 
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
@@ -46,6 +65,7 @@ const CreateAccount = ({ history }) => {
                         name="name"
                         id="name"
                         placeholder="Enter a Username"
+                        required
                     />
                 </FormGroup>
 
@@ -58,6 +78,7 @@ const CreateAccount = ({ history }) => {
                         name="email"
                         id="email"
                         placeholder="Enter your email address"
+                        required
                     />
                 </FormGroup>
 
@@ -70,6 +91,8 @@ const CreateAccount = ({ history }) => {
                         name="password"
                         id="password"
                         placeholder="Choose a password"
+                        minLength='6'
+                        required
                     />
                 </FormGroup>
 
@@ -82,6 +105,8 @@ const CreateAccount = ({ history }) => {
                         name="password2"
                         id="password2"
                         placeholder="Re-enter your password"
+                        minLength='6'
+                        required
                     />
                 </FormGroup>
 
@@ -102,4 +127,4 @@ const CreateAccount = ({ history }) => {
 
 
 
-export default CreateAccount;
+export default Register;

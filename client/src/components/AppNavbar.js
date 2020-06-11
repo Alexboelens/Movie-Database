@@ -94,7 +94,7 @@ const AppNavbar = ({ loadUser }) => {
                             <NavLink tag={RRNavLink} activeClassName='active' to='/login'>Login</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink tag={RRNavLink} activeClassName='active' to='/create-account'>Create Account</NavLink>
+                            <NavLink tag={RRNavLink} activeClassName='active' to='/register'>Register</NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink tag={RRNavLink} activeClassName='active' to='/my-list'>My List</NavLink>
