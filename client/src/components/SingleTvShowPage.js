@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import { getTvShowById } from '../actions/tvShowActions';
 import SingleItemHeader from './SingleItemHeader';
@@ -6,10 +6,19 @@ import SingleItemCast from './SingleItemCast';
 import SingleSimilar from './SingleSimilar';
 import SingleReviews from './SingleReviews';
 import SingleItemVideos from './SingleItemVideos';
+import AuthContext from '../context/auth/authContext';
 
 
 const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
     const id = window.location.pathname.split('/')[2];
+
+    const authContext = useContext(AuthContext);
+    const { loadUser } = authContext;
+
+    useEffect(() => {
+        loadUser();
+        // eslint-disable-next-line
+    }, []);
 
     useEffect(() => {
         getTvShowById(id)

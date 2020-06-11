@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { connect } from 'react-redux';
 import { getMoviesById } from '../actions/movieActions';
 import SingleItemHeader from './SingleItemHeader';
@@ -6,10 +6,19 @@ import SingleItemCast from './SingleItemCast';
 import SingleItemVideos from './SingleItemVideos';
 import SingleSimilar from './SingleSimilar';
 import SingleReviews from './SingleReviews';
+import AuthContext from '../context/auth/authContext';
 
 
 const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
     const id = window.location.pathname.split('/')[2];
+
+    const authContext = useContext(AuthContext);
+    const { loadUser } = authContext;
+
+    useEffect(() => {
+        loadUser();
+        // eslint-disable-next-line
+    }, []);
 
     useEffect(() => {
         getMoviesById(id);

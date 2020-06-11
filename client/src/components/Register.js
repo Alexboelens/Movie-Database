@@ -3,20 +3,23 @@ import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 import AlertContext from '../context/alert/alertContext';
 import AuthContext from '../context/auth/authContext';
 
-const Register = () => {
+const Register = ({ history }) => {
     const alertContext = useContext(AlertContext);
     const authContext = useContext(AuthContext);
 
     const { setAlert } = alertContext;
-    const { register, error, clearErrors } = authContext;
+    const { register, error, clearErrors, isAuthenticated } = authContext;
 
     useEffect(() => {
+        if (isAuthenticated) {
+            history.push('/');
+        }
         if (error && error.includes('exists')) {
             setAlert(error, 'danger');
             clearErrors();
         }
-
-    }, [error, clearErrors, setAlert])
+        // eslint-disable-next-line
+    }, [error, isAuthenticated, history])
 
     const [state, setState] = useState({
         name: '',

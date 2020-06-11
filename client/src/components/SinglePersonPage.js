@@ -1,12 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import SinglePersonHeader from './SinglePersonHeader';
 import SinglePersonRoles from './SinglePersonRoles';
 import { connect } from 'react-redux';
 import { getPersonById } from '../actions/peopleActions';
+import AuthContext from '../context/auth/authContext';
 
 
 const SinglePersonPage = ({ person, getPersonById, personIsLoaded }) => {
     const id = window.location.pathname.split('/')[2];
+
+    const authContext = useContext(AuthContext);
+    const { loadUser } = authContext;
+
+    useEffect(() => {
+        loadUser();
+        // eslint-disable-next-line
+    }, []);
 
     useEffect(() => {
         getPersonById(id)

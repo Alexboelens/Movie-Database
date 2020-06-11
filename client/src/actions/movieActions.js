@@ -11,7 +11,6 @@ import {
 const key = '3c29d56bc6a6028be109cd46d895c48e'
 
 
-
 export const getTrendingMovies = () => dispatch => {
     axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`)
         .then(res => {

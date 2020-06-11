@@ -29,7 +29,6 @@ import AlertState from './context/alert/AlertState';
 import Alerts from './components/Alerts';
 
 
-
 const App = () => {
   return (
 
