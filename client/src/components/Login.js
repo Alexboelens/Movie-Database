@@ -1,13 +1,30 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Button, Form, FormGroup, Label, Input, Container } from 'reactstrap';
 import AuthContext from '../context/auth/authContext';
+import AlertContext from '../context/alert/alertContext';
 
 
-const Login = () => {
+const Login = ({ history }) => {
+    const authContext = useContext(AuthContext);
+    const alertContext = useContext(AlertContext);
+
+    const { setAlert } = alertContext;
+    const { loginUser, error, clearErrors, isAuthenticated } = authContext;
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            history.push('/');
+        }
+        if (error && error.includes('Credentials')) {
+            setAlert(error, 'danger');
+            clearErrors();
+        }
+        // eslint-disable-next-line
+    }, [error, isAuthenticated, history])
 
     const [state, setState] = useState({
         email: '',
-        password: '',
+        password: ''
     })
 
     const { email, password } = state;
@@ -21,7 +38,14 @@ const Login = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('login')
+        if (email === '' || password === '') {
+            setAlert('Please fill in all fields', 'danger')
+        } else {
+            loginUser({
+                email,
+                password
+            })
+        }
     }
 
     return (
@@ -40,6 +64,7 @@ const Login = () => {
                         name="email"
                         id="email"
                         placeholder="Enter your email address"
+                        required
                     />
                 </FormGroup>
 
@@ -52,6 +77,7 @@ const Login = () => {
                         name="password"
                         id="password"
                         placeholder="Choose a password"
+                        required
                     />
                 </FormGroup>
 

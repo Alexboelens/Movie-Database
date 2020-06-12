@@ -57,7 +57,6 @@ const AuthState = props => {
                 type: REGISTER_SUCCESS,
                 payload: res.data
             });
-
             loadUser();
 
         } catch (err) {
@@ -78,7 +77,7 @@ const AuthState = props => {
         }
 
         try {
-            const res = await axios.post('/api/auth', formData, config);
+            const res = await axios.post('/api/auth/login', formData, config);
 
             dispatch({
                 type: LOGIN_SUCCESS,
@@ -97,7 +96,7 @@ const AuthState = props => {
 
 
     // Logout User
-    const logoutUser = () => console.log('logout user');
+    const logoutUser = () => dispatch({ type: LOGOUT });
 
 
     // Clear Errors

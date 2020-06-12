@@ -1,15 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext, Fragment } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import icon from '../components/images/logo.png';
+import AuthContext from '../context/auth/authContext';
 
 
-const AppNavbar = ({ loadUser }) => {
+const AppNavbar = () => {
+    const authContext = useContext(AuthContext);
+    const { loadUser, isAuthenticated, user, logoutUser } = authContext;
+
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        loadUser();
+        // eslint-disable-next-line
+    }, []);
 
     const toggle = () => {
         setIsOpen(!isOpen)
     }
+
+    const handleLogout = () => {
+        logoutUser()
+    }
+
+    const authLinks = (
+        <Fragment>
+            <NavItem className='mr-3'>
+                <NavLink to='#!' className='active'>Welcome {user && user.name}</NavLink>
+            </NavItem>
+            <NavItem>
+                <NavLink tag={RRNavLink} activeClassName='active' className='mr-1' to='/my-list'>Favorites</NavLink>
+            </NavItem>
+            <NavItem>
+                <NavLink to='#!' onClick={handleLogout} tag={RRNavLink} activeClassName='active'>
+                    <i className='fas fa-sign-out-alt mr-1' />
+                    Logout
+                </NavLink>
+            </NavItem>
+        </Fragment>
+    );
+
+    const guestLinks = (
+        <Fragment>
+            <NavItem>
+                <NavLink tag={RRNavLink} activeClassName='active' to='/login'>Login</NavLink>
+            </NavItem>
+            <NavItem>
+                <NavLink tag={RRNavLink} activeClassName='active' to='/register'>Register</NavLink>
+            </NavItem>
+        </Fragment>
+    );
 
     return (
         <div>
@@ -90,15 +131,7 @@ const AppNavbar = ({ loadUser }) => {
                         </UncontrolledDropdown>
                     </Nav>
                     <Nav navbar className='mr-5'>
-                        <NavItem>
-                            <NavLink tag={RRNavLink} activeClassName='active' to='/login'>Login</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink tag={RRNavLink} activeClassName='active' to='/register'>Register</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink tag={RRNavLink} activeClassName='active' to='/my-list'>My List</NavLink>
-                        </NavItem>
+                        {isAuthenticated ? authLinks : guestLinks}
                     </Nav>
                 </Collapse>
             </Navbar>
