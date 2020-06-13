@@ -40,5 +40,4 @@ const SearchBar = ({ history }) => {
     )
 }
 
-
 export default withRouter(SearchBar);

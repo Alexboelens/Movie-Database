@@ -8,11 +8,10 @@ import {
     GET_MOVIES_UPCOMING
 } from './types';
 
-const key = '3c29d56bc6a6028be109cd46d895c48e'
 
 
 export const getTrendingMovies = () => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${key}`)
+    axios.get('/movies/trending')
         .then(res => {
             dispatch({
                 type: GET_ALL_TRENDING_MOVIES,
@@ -23,7 +22,7 @@ export const getTrendingMovies = () => dispatch => {
 }
 
 export const getMoviesById = id => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=videos,images,reviews,similar,credits`)
+    axios.get(`/movies/${id}`)
         .then(res => {
             dispatch({
                 type: GET_MOVIES_BY_ID,
@@ -34,7 +33,7 @@ export const getMoviesById = id => dispatch => {
 }
 
 export const getMoviesNowPlaying = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=${page}&region=us`)
+    axios.get(`/movies/playing/${page}`)
         .then(res => {
             dispatch({
                 type: GET_MOVIES_NOW_PLAYING,
@@ -44,8 +43,19 @@ export const getMoviesNowPlaying = page => dispatch => {
         })
 }
 
+export const getPopularMovies = page => dispatch => {
+    axios.get(`/movies/popular/${page}`)
+        .then(res => {
+            dispatch({
+                type: GET_MOVIES_POPULAR,
+                payload: res.data,
+                popularLoaded: true
+            })
+        })
+}
+
 export const getUpcomingMovies = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=${page}&region=us`)
+    axios.get(`/movies/upcoming/${page}`)
         .then(res => {
             dispatch({
                 type: GET_MOVIES_UPCOMING,
@@ -56,23 +66,12 @@ export const getUpcomingMovies = page => dispatch => {
 }
 
 export const getTopRatedMovies = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=${page}&region=us`)
+    axios.get(`/movies/topRated/${page}`)
         .then(res => {
             dispatch({
                 type: GET_MOVIES_TOP_RATED,
                 payload: res.data,
                 topRatedLoaded: true
-            })
-        })
-}
-
-export const getPopularMovies = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}&region=us`)
-        .then(res => {
-            dispatch({
-                type: GET_MOVIES_POPULAR,
-                payload: res.data,
-                popularLoaded: true
             })
         })
 }

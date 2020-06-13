@@ -8,12 +8,10 @@ import {
 } from './types';
 
 import axios from 'axios';
-const key = '3c29d56bc6a6028be109cd46d895c48e'
-
 
 
 export const getTrendingTvShows = () => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/trending/tv/day?api_key=${key}`)
+    axios.get('/tv/trending')
         .then(res => {
             dispatch({
                 type: GET_ALL_TRENDING_TVSHOWS,
@@ -24,7 +22,7 @@ export const getTrendingTvShows = () => dispatch => {
 }
 
 export const getTvShowById = id => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/tv/${id}?api_key=${key}&append_to_response=videos,reviews,similar,credits`)
+    axios.get(`/tv/${id}`)
         .then(res => {
             dispatch({
                 type: GET_TVSHOW_BY_ID,
@@ -34,30 +32,8 @@ export const getTvShowById = id => dispatch => {
         })
 }
 
-export const getTvShowsAiringToday = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/tv/airing_today?api_key=${key}&language=en-US&page=${page}`)
-        .then(res => {
-            dispatch({
-                type: GET_TVSHOWS_AIRING_TODAY,
-                payload: res.data,
-                airingTvShowsLoaded: true
-            })
-        })
-}
-
-export const getTvShowsOnTv = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=${page}`)
-        .then(res => {
-            dispatch({
-                type: GET_TVSHOWS_ON_TV,
-                payload: res.data,
-                onTvLoaded: true
-            })
-        })
-}
-
 export const getPopularTvShows = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=${page}`)
+    axios.get(`/tv/popular/${page}`)
         .then(res => {
             dispatch({
                 type: GET_TVSHOWS_POPULAR,
@@ -67,8 +43,31 @@ export const getPopularTvShows = page => dispatch => {
         })
 }
 
+export const getTvShowsOnTv = page => dispatch => {
+    axios.get(`/tv/onTv/${page}`)
+        .then(res => {
+            dispatch({
+                type: GET_TVSHOWS_ON_TV,
+                payload: res.data,
+                onTvLoaded: true
+            })
+        })
+}
+
+export const getTvShowsAiringToday = page => dispatch => {
+    axios.get(`/tv/playing/${page}`)
+        .then(res => {
+            dispatch({
+                type: GET_TVSHOWS_AIRING_TODAY,
+                payload: res.data,
+                airingTvShowsLoaded: true
+            })
+        })
+}
+
+
 export const getTopRatedTvShows = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/tv/top_rated?api_key=${key}&language=en-US&page=${page}`)
+    axios.get(`/tv/topRated/${page}`)
         .then(res => {
             dispatch({
                 type: GET_TVSHOWS_TOP_RATED,

@@ -10,7 +10,8 @@ const SinglePersonPage = ({ person, getPersonById, personIsLoaded }) => {
 
     useEffect(() => {
         getPersonById(id)
-    }, [id, getPersonById])
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div>

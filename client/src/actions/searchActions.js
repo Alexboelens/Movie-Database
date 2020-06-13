@@ -1,10 +1,9 @@
 import { GET_SEARCH_RESULTS } from './types'
 import axios from 'axios';
-const key = '3c29d56bc6a6028be109cd46d895c48e'
 
 
 export const getSearchResults = (query, page) => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/search/multi?api_key=${key}&language=en-US&query=${query}&page=${page}&include_adult=false`)
+    axios.get(`/search/${query}/${page}`)
         .then(res => {
             dispatch({
                 type: GET_SEARCH_RESULTS,

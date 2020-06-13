@@ -1,19 +1,23 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getMoviesById } from '../actions/movieActions';
+import React, { useEffect, useContext } from 'react';
 import SingleItemHeader from './SingleItemHeader';
 import SingleItemCast from './SingleItemCast';
 import SingleItemVideos from './SingleItemVideos';
 import SingleSimilar from './SingleSimilar';
 import SingleReviews from './SingleReviews';
+import MovieContext from '../context/movie/movieContext';
 
 
-const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
+const SingleMoviePage = () => {
     const id = window.location.pathname.split('/')[2];
+
+    const movieContext = useContext(MovieContext);
+
+    const { getMoviesById, movies, moviesAreLoaded } = movieContext;
 
     useEffect(() => {
         getMoviesById(id);
-    }, [getMoviesById, id, moviesAreLoaded])
+        // eslint-disable-next-line
+    }, [])
 
     return (<div>
         {moviesAreLoaded && <div>
@@ -56,10 +60,5 @@ const SingleMoviePage = ({ getMoviesById, movies, moviesAreLoaded }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    movies: state.movies.movies,
-    moviesAreLoaded: state.movies.moviesAreLoaded
-})
-
-export default connect(mapStateToProps, { getMoviesById })(SingleMoviePage);
+export default SingleMoviePage;
 

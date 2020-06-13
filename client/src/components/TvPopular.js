@@ -12,7 +12,9 @@ const TvPopular = ({ popularTvShows, popularTvShowsLoaded, getPopularTvShows }) 
 
     useEffect(() => {
         getPopularTvShows(page);
-    }, [getPopularTvShows, page])
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        // eslint-disable-next-line
+    }, [page])
 
     const changePage = async pageNum => {
         if (pageNum === 'next') {
@@ -22,8 +24,6 @@ const TvPopular = ({ popularTvShows, popularTvShowsLoaded, getPopularTvShows }) 
         } else {
             await setPage(pageNum);
         }
-        getPopularTvShows(page);
-        window.scrollTo({ top: 0, behavior: 'auto' });
     }
 
     return (

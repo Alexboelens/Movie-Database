@@ -1,4 +1,5 @@
 {
     "mongodb_URI": "mongodb+srv://Alex:Alex1985@movie-database-cluster-s4c0b.mongodb.net/movie-database?retryWrites=true&w=majority",
-    "jwtSecret": "DFSFw43rwr23WEFSF"
+    "jwtSecret": "DFSFw43rwr23WEFSF",
+    "apiKey": "3c29d56bc6a6028be109cd46d895c48e"
 }

@@ -1,30 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getTopRatedMovies } from '../actions/movieActions';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container, Row, Col } from 'reactstrap'
 import noImage from './images/no-movie-image.png';
 import Box from './Box';
 import Pagination from './Pagination';
+import MovieContext from '../context/movie/movieContext';
 
 
+const MoviesTopRated = () => {
+    const movieContext = useContext(MovieContext);
 
-const MoviesTopRated = ({ topRatedLoaded, topRatedMovies, getTopRatedMovies }) => {
+    const { topRatedLoaded, topRatedMovies, getTopRatedMovies } = movieContext;
+
     const [page, setPage] = useState(1);
 
     useEffect(() => {
         getTopRatedMovies(page);
-    }, [getTopRatedMovies, page])
-
-    const changePage = async pageNum => {
-        if (pageNum === 'next') {
-            await setPage(page + 1);
-        } else if (pageNum === 'prev') {
-            await setPage(page - 1);
-        } else {
-            await setPage(pageNum);
-        }
-        getTopRatedMovies(page);
         window.scrollTo({ top: 0, behavior: 'auto' });
+        //eslint-disable-next-line
+    }, [page])
+
+    const changePage = pageNum => {
+        if (pageNum === 'next') {
+            setPage(page + 1);
+        } else if (pageNum === 'prev') {
+            setPage(page - 1);
+        } else {
+            setPage(pageNum);
+        }
     }
 
     return (
@@ -65,10 +67,5 @@ const MoviesTopRated = ({ topRatedLoaded, topRatedMovies, getTopRatedMovies }) =
     )
 }
 
-const mapStateToProps = state => ({
-    topRatedMovies: state.movies.topRatedMovies,
-    topRatedLoaded: state.movies.topRatedLoaded
-})
-
-export default connect(mapStateToProps, { getTopRatedMovies })(MoviesTopRated);
+export default MoviesTopRated;
 

@@ -33,7 +33,7 @@ const AppNavbar = () => {
                 <NavLink tag={RRNavLink} activeClassName='active' className='mr-1' to='/my-list'>Favorites</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink to='#!' onClick={handleLogout} tag={RRNavLink} activeClassName='active'>
+                <NavLink to='#!' onClick={handleLogout}>
                     <i className='fas fa-sign-out-alt mr-1' />
                     Logout
                 </NavLink>

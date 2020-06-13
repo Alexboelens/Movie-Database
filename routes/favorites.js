@@ -26,7 +26,7 @@ router.get('/', auth, async (req, res) => {
 router.post('/', [auth, [
     check('image', 'Please add a image URL').not().isEmpty(),
     check('title', 'Please include a title').not().isEmpty(),
-    check('category', 'please add a category of person, tv or movie').not().isEmpty()
+    check('category', 'Please add a category of person, tv or movie').not().isEmpty()
 ]], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

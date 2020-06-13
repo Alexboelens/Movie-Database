@@ -11,7 +11,9 @@ const PopularPeople = ({ popularLoaded, popularPeople, getPopularPeople }) => {
 
     useEffect(() => {
         getPopularPeople(page);
-    }, [getPopularPeople, page])
+        window.scrollTo({ top: 0 });
+        // eslint-disable-next-line
+    }, [page])
 
     const changePage = async pageNum => {
         if (pageNum === 'next') {
@@ -21,8 +23,6 @@ const PopularPeople = ({ popularLoaded, popularPeople, getPopularPeople }) => {
         } else {
             await setPage(pageNum);
         }
-        getPopularPeople(page);
-        window.scrollTo({ top: 0 });
     }
 
     return (

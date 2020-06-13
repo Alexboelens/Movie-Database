@@ -12,7 +12,9 @@ const TvAiringToday = ({ airingTvShows, airingTvShowsLoaded, getTvShowsAiringTod
 
     useEffect(() => {
         getTvShowsAiringToday(page);
-    }, [getTvShowsAiringToday, page])
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        // eslint-disable-next-line
+    }, [page])
 
     const changePage = async pageNum => {
         if (pageNum === 'next') {
@@ -22,8 +24,6 @@ const TvAiringToday = ({ airingTvShows, airingTvShowsLoaded, getTvShowsAiringTod
         } else {
             await setPage(pageNum);
         }
-        getTvShowsAiringToday(page);
-        window.scrollTo({ top: 0 });
     }
 
     return (
@@ -31,7 +31,7 @@ const TvAiringToday = ({ airingTvShows, airingTvShowsLoaded, getTvShowsAiringTod
             {airingTvShowsLoaded &&
                 <div>
                     <Container className='text-center mt-4 mb-5'>
-                        <h1 onClick={changePage}>Currently Airing TV Shows</h1>
+                        <h1 onClick={changePage}>TV Shows Airing Today</h1>
                     </Container>
 
                     <Container>

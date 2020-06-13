@@ -26,6 +26,9 @@ import MyList from './components/MyList';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
+import MovieState from './context/movie/MovieState';
+import TvState from './context/tv/TvState';
+import PeopleState from './context/people/PeopleState';
 import Alerts from './components/Alerts';
 
 
@@ -33,42 +36,49 @@ const App = () => {
   return (
 
     <AuthState>
-      <AlertState>
+      <MovieState>
+        {/* <TvState>
+          <PeopleState> */}
+        <AlertState>
 
-        <Provider store={store}>
+          <Provider store={store}>
 
-          <Router>
-            <AppNavbar />
-            <Alerts />
+            <Router>
 
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route exact path='/movies/now-playing' component={MoviesNowPlaying} />
-              <Route exact path='/movies/popular' component={MoviesPopular} />
-              <Route exact path='/movies/top-rated' component={MoviesTopRated} />
-              <Route exact path='/movies/upcoming' component={MoviesUpcoming} />
-              <Route exact path='/movies/:id' component={SingleMoviePage} />
-              <Route exact path='/movies/:id/cast' component={MovieCast} />
-              <Route exact path='/tv/airing-today' component={TvAiringToday} />
-              <Route exact path='/tv/popular' component={TvPopular} />
-              <Route exact path='/tv/on-tv' component={TvOnTv} />
-              <Route exact path='/tv/top-rated' component={TvTopRated} />
-              <Route exact path='/tv/:id' component={SingleTvShowPage} />
-              <Route exact path='/tv/:id/cast' component={TvShowCast} />
-              <Route exact path='/people/popular' component={PopularPeople} />
-              <Route exact path='/people/:id' component={SinglePersonPage} />
-              <Route exact path='/search' component={NoSearchResults} />
-              <Route exact path='/search/:query' component={SearchResults} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/register' component={Register} />
-              <Route exact path='/my-list' component={MyList} />
+              <AppNavbar />
+              <Alerts />
 
-            </Switch>
-          </Router>
+              <Switch>
+                <Route exact path='/' component={Home} />
+                <Route exact path='/movies/now-playing' component={MoviesNowPlaying} />
+                <Route exact path='/movies/popular' component={MoviesPopular} />
+                <Route exact path='/movies/top-rated' component={MoviesTopRated} />
+                <Route exact path='/movies/upcoming' component={MoviesUpcoming} />
+                <Route exact path='/movies/:id' component={SingleMoviePage} />
+                <Route exact path='/movies/:id/cast' component={MovieCast} />
+                <Route exact path='/tv/airing-today' component={TvAiringToday} />
+                <Route exact path='/tv/popular' component={TvPopular} />
+                <Route exact path='/tv/on-tv' component={TvOnTv} />
+                <Route exact path='/tv/top-rated' component={TvTopRated} />
+                <Route exact path='/tv/:id' component={SingleTvShowPage} />
+                <Route exact path='/tv/:id/cast' component={TvShowCast} />
+                <Route exact path='/people/popular' component={PopularPeople} />
+                <Route exact path='/people/:id' component={SinglePersonPage} />
+                <Route exact path='/search' component={NoSearchResults} />
+                <Route exact path='/search/:query' component={SearchResults} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/register' component={Register} />
+                <Route exact path='/my-list' component={MyList} />
+              </Switch>
 
-        </Provider>
+            </Router>
 
-      </AlertState>
+          </Provider>
+
+        </AlertState>
+        {/* </PeopleState>
+        </TvState> */}
+      </MovieState>
     </AuthState>
   );
 }

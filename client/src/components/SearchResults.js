@@ -17,7 +17,6 @@ const SearchResults = ({ getSearchResults, searchResults, searchResultsAreLoaded
     }
 
     const changePage = pageNum => {
-        const query = window.location.pathname.split('/')[2];
         if (pageNum === 'next') {
             setPage(page + 1)
         } else if (pageNum === 'prev') {
@@ -25,14 +24,14 @@ const SearchResults = ({ getSearchResults, searchResults, searchResultsAreLoaded
         } else {
             setPage(pageNum)
         }
-        getSearchResults(query, page);
     }
 
     useEffect(() => {
         const path = window.location.pathname.split('/')[2]
         const query = path !== undefined ? path : ''
-        getSearchResults(query, page)
-    }, [getSearchResults, page])
+        getSearchResults(query, page);
+        // eslint-disable-next-line
+    }, [page])
 
     return (
         <div>

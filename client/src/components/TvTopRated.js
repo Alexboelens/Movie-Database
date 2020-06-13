@@ -13,7 +13,9 @@ const TvTopRated = ({ topRatedTvShows, topRatedTvShowsLoaded, getTopRatedTvShows
 
     useEffect(() => {
         getTopRatedTvShows(page);
-    }, [getTopRatedTvShows, page])
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        // eslint-disable-next-line
+    }, [page])
 
     const changePage = async pageNum => {
         if (pageNum === 'next') {
@@ -23,8 +25,6 @@ const TvTopRated = ({ topRatedTvShows, topRatedTvShowsLoaded, getTopRatedTvShows
         } else {
             await setPage(pageNum);
         }
-        getTopRatedTvShows(page);
-        window.scrollTo({ top: 0, behavior: 'auto' });
     }
 
     return (

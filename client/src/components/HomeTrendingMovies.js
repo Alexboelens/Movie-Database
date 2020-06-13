@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getTrendingMovies } from '../actions/movieActions';
+import React, { useEffect, useContext } from 'react';
 import Box from './Box';
 import { Container, Row, Col } from 'reactstrap';
 import noImage from './images/no-movie-image.png';
+import MovieContext from '../context/movie/movieContext';
 
 
-const HomeTrendingMovies = ({ trendingMovies, trendingMoviesAreLoaded, getTrendingMovies }) => {
+const HomeTrendingMovies = () => {
+    const movieContext = useContext(MovieContext);
+
+    const { trendingMovies, trendingMoviesAreLoaded, getTrendingMovies } = movieContext;
 
     useEffect(() => {
         getTrendingMovies();
-    }, [getTrendingMovies])
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <Container>
@@ -42,9 +45,5 @@ const HomeTrendingMovies = ({ trendingMovies, trendingMoviesAreLoaded, getTrendi
     )
 }
 
-const mapStateToProps = state => ({
-    trendingMovies: state.movies.trendingMovies,
-    trendingMoviesAreLoaded: state.movies.trendingMoviesAreLoaded
-})
 
-export default connect(mapStateToProps, { getTrendingMovies })(HomeTrendingMovies);
+export default HomeTrendingMovies;

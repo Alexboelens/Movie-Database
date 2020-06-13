@@ -1,29 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getUpcomingMovies } from '../actions/movieActions';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container, Row, Col } from 'reactstrap'
 import noImage from './images/no-movie-image.png';
 import Box from './Box';
 import Pagination from './Pagination';
+import MovieContext from '../context/movie/movieContext';
 
 
-const MoviesUpcoming = ({ upcomingLoaded, upcomingMovies, getUpcomingMovies }) => {
+const MoviesUpcoming = () => {
+    const movieContext = useContext(MovieContext);
+
+    const { upcomingLoaded, upcomingMovies, getUpcomingMovies } = movieContext;
+
     const [page, setPage] = useState(1);
 
     useEffect(() => {
         getUpcomingMovies(page);
-    }, [getUpcomingMovies, page])
-
-    const changePage = async pageNum => {
-        if (pageNum === 'next') {
-            await setPage(page + 1);
-        } else if (pageNum === 'prev') {
-            await setPage(page - 1);
-        } else {
-            await setPage(pageNum);
-        }
-        getUpcomingMovies(page);
         window.scrollTo({ top: 0, behavior: 'auto' });
+        //eslint-disable-next-line
+    }, [page])
+
+    const changePage = pageNum => {
+        if (pageNum === 'next') {
+            setPage(page + 1);
+        } else if (pageNum === 'prev') {
+            setPage(page - 1);
+        } else {
+            setPage(pageNum);
+        }
     }
 
     return (
@@ -64,10 +67,4 @@ const MoviesUpcoming = ({ upcomingLoaded, upcomingMovies, getUpcomingMovies }) =
     )
 }
 
-const mapStateToProps = state => ({
-    upcomingMovies: state.movies.upcomingMovies,
-    upcomingLoaded: state.movies.upcomingLoaded
-})
-
-export default connect(mapStateToProps, { getUpcomingMovies })(MoviesUpcoming);
-
+export default MoviesUpcoming;

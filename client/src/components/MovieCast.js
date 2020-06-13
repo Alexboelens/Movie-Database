@@ -1,17 +1,18 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux';
-import { getMoviesById } from '../actions/movieActions'
+import React, { useEffect, useContext } from 'react'
 import CastItem from './CastItem';
+import MovieContext from '../context/movie/movieContext';
 
 
-const MovieCast = ({ movies, moviesAreLoaded, getMoviesById }) => {
+const MovieCast = () => {
     const id = window.location.pathname.split('/')[2];
 
-    console.log(movies)
+    const movieContext = useContext(MovieContext);
+    const { movies, moviesAreLoaded, getMoviesById } = movieContext;
 
     useEffect(() => {
         getMoviesById(id)
-    }, [getMoviesById, id])
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div>
@@ -32,10 +33,4 @@ const MovieCast = ({ movies, moviesAreLoaded, getMoviesById }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    movies: state.movies.movies,
-    moviesAreLoaded: state.movies.moviesAreLoaded
-})
-
-
-export default connect(mapStateToProps, { getMoviesById })(MovieCast);
+export default MovieCast;

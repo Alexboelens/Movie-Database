@@ -12,7 +12,9 @@ const TvOnTv = ({ tvShowsOnTv, onTvLoaded, getTvShowsOnTv }) => {
 
     useEffect(() => {
         getTvShowsOnTv(page);
-    }, [getTvShowsOnTv, page])
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        // eslint-disable-next-line
+    }, [page])
 
     const changePage = async pageNum => {
         if (pageNum === 'next') {
@@ -22,8 +24,6 @@ const TvOnTv = ({ tvShowsOnTv, onTvLoaded, getTvShowsOnTv }) => {
         } else {
             await setPage(pageNum);
         }
-        getTvShowsOnTv(page);
-        window.scrollTo({ top: 0, behavior: 'auto' });
     }
 
     return (

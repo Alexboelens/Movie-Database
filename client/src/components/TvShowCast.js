@@ -8,8 +8,9 @@ const TvShowCast = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
     const id = window.location.pathname.split('/')[2];
 
     useEffect(() => {
-        getTvShowById(id)
-    }, [getTvShowById, id])
+        getTvShowById(id);
+        // eslint-disable-next-line
+    }, [id])
 
     return (
         <div>

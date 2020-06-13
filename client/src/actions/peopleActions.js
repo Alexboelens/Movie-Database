@@ -1,10 +1,9 @@
 import { GET_ALL_TRENDING_PEOPLE, GET_PERSON_BY_ID, GET_POPULAR_PEOPLE } from './types';
 import axios from 'axios';
-const key = '3c29d56bc6a6028be109cd46d895c48e'
 
 
 export const getTrendingPeople = () => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/trending/person/day?api_key=${key}`)
+    axios.get('/people/trending')
         .then(res => {
             dispatch({
                 type: GET_ALL_TRENDING_PEOPLE,
@@ -15,7 +14,7 @@ export const getTrendingPeople = () => dispatch => {
 }
 
 export const getPersonById = id => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=${key}&append_to_response=movie_credits`)
+    axios.get(`/people/${id}`)
         .then(res => {
             dispatch({
                 type: GET_PERSON_BY_ID,
@@ -26,7 +25,7 @@ export const getPersonById = id => dispatch => {
 }
 
 export const getPopularPeople = page => dispatch => {
-    axios.get(`https://api.themoviedb.org/3/person/popular?api_key=${key}&language=en-US&page=${page}`)
+    axios.post(`/people/popular/${page}`)
         .then(res => {
             dispatch({
                 type: GET_POPULAR_PEOPLE,

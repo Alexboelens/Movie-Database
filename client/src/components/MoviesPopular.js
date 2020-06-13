@@ -1,29 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getPopularMovies } from '../actions/movieActions';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container, Row, Col } from 'reactstrap'
 import noImage from './images/no-movie-image.png';
 import Box from './Box';
 import Pagination from './Pagination';
+import MovieContext from '../context/movie/movieContext';
 
 
-const MoviesPopular = ({ popularLoaded, popularMovies, getPopularMovies }) => {
+const MoviesPopular = () => {
+    const movieContext = useContext(MovieContext);
+
+    const { popularLoaded, popularMovies, getPopularMovies } = movieContext;
+
     const [page, setPage] = useState(1);
 
     useEffect(() => {
         getPopularMovies(page);
-    }, [getPopularMovies, page])
+        window.scrollTo({ top: 0, behavior: 'auto' });
+        //eslint-disable-next-line
+    }, [page])
 
-    const changePage = async pageNum => {
+    const changePage = pageNum => {
         if (pageNum === 'next') {
-            await setPage(page + 1);
+            setPage(page + 1);
         } else if (pageNum === 'prev') {
-            await setPage(page - 1);
+            setPage(page - 1);
         } else {
-            await setPage(pageNum);
+            setPage(pageNum);
         }
-        getPopularMovies(page);
-        window.scrollTo({ top: 0 });
     }
 
     return (
@@ -64,10 +67,4 @@ const MoviesPopular = ({ popularLoaded, popularMovies, getPopularMovies }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    popularMovies: state.movies.popularMovies,
-    popularLoaded: state.movies.popularLoaded
-})
-
-export default connect(mapStateToProps, { getPopularMovies })(MoviesPopular);
-
+export default MoviesPopular;

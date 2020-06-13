@@ -13,7 +13,8 @@ const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
 
     useEffect(() => {
         getTvShowById(id)
-    }, [getTvShowById, id])
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div>
