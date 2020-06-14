@@ -9,10 +9,6 @@ const jwt = require('jsonwebtoken');
 
 
 
-
-
-
-
 // api/auth GET
 // get logged in user
 // PRIVATE
@@ -25,7 +21,6 @@ router.get('/', auth, async (req, res) => {
         return res.status(500).send('Server Error');
     }
 });
-
 
 
 // api/auth/login POST
@@ -74,8 +69,6 @@ router.post('/login', [
         res.status(500).send('Server Error');
     }
 });
-
-
 
 
 module.exports = router;

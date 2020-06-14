@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getTvShowsOnTv } from '../actions/tvShowActions'
+import React, { useEffect, useState, useContext } from 'react';
+import TvContext from '../context/tv/tvContext';
 import { Container, Row, Col } from 'reactstrap'
 import noImage from './images/no-movie-image.png';
 import Box from './Box';
 import Pagination from './Pagination';
 
 
-const TvOnTv = ({ tvShowsOnTv, onTvLoaded, getTvShowsOnTv }) => {
+const TvOnTv = () => {
     const [page, setPage] = useState(1);
+
+    const tvContext = useContext(TvContext);
+    const { tvShowsOnTv, onTvLoaded, getTvShowsOnTv } = tvContext;
+
 
     useEffect(() => {
         getTvShowsOnTv(page);
@@ -64,10 +67,5 @@ const TvOnTv = ({ tvShowsOnTv, onTvLoaded, getTvShowsOnTv }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    tvShowsOnTv: state.tvShows.tvShowsOnTv,
-    onTvLoaded: state.tvShows.onTvLoaded
-})
-
-export default connect(mapStateToProps, { getTvShowsOnTv })(TvOnTv);
+export default TvOnTv;
 

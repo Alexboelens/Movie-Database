@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getPopularTvShows } from '../actions/tvShowActions'
+import React, { useEffect, useState, useContext } from 'react';
+import TvContext from '../context/tv/tvContext';
 import { Container, Row, Col } from 'reactstrap'
 import noImage from './images/no-movie-image.png';
 import Box from './Box';
 import Pagination from './Pagination';
 
 
-const TvPopular = ({ popularTvShows, popularTvShowsLoaded, getPopularTvShows }) => {
+const TvPopular = () => {
     const [page, setPage] = useState(1);
+
+    const tvContext = useContext(TvContext);
+    const { popularTvShows, popularTvShowsLoaded, getPopularTvShows } = tvContext;
+
 
     useEffect(() => {
         getPopularTvShows(page);
@@ -64,10 +67,5 @@ const TvPopular = ({ popularTvShows, popularTvShowsLoaded, getPopularTvShows }) 
     )
 }
 
-const mapStateToProps = state => ({
-    popularTvShows: state.tvShows.popularTvShows,
-    popularTvShowsLoaded: state.tvShows.popularTvShowsLoaded
-})
-
-export default connect(mapStateToProps, { getPopularTvShows })(TvPopular);
+export default TvPopular;
 

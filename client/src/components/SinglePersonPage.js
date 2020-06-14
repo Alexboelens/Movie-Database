@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import SinglePersonHeader from './SinglePersonHeader';
 import SinglePersonRoles from './SinglePersonRoles';
-import { connect } from 'react-redux';
-import { getPersonById } from '../actions/peopleActions';
+import PeopleContext from '../context/people/peopleContext';
+import FavoriteButton from './FavoriteButton';
 
-
-const SinglePersonPage = ({ person, getPersonById, personIsLoaded }) => {
+const SinglePersonPage = () => {
     const id = window.location.pathname.split('/')[2];
 
+    const peopleContext = useContext(PeopleContext);
+    const { person, getPersonById, personIsLoaded } = peopleContext;
+
     useEffect(() => {
-        getPersonById(id)
+        getPersonById(id);
+        window.scrollTo({ top: 0, behavior: 'auto' });
         // eslint-disable-next-line
-    }, [])
+    }, [id])
 
     return (
         <div>
@@ -24,7 +27,13 @@ const SinglePersonPage = ({ person, getPersonById, personIsLoaded }) => {
                         birthday={person.birthday}
                         placeOfBirth={person.place_of_birth}
                         biography={person.biography}
-                    />
+                        title={person.name}
+                    >
+                        <FavoriteButton
+                            image={person.profile_path}
+                            title={person.name}
+                        />
+                    </SinglePersonHeader>
 
                     <SinglePersonRoles
                         mainTitle='Roles Played'
@@ -36,9 +45,5 @@ const SinglePersonPage = ({ person, getPersonById, personIsLoaded }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    person: state.people.person,
-    personIsLoaded: state.people.personIsLoaded
-})
 
-export default connect(mapStateToProps, { getPersonById })(SinglePersonPage);
+export default SinglePersonPage;

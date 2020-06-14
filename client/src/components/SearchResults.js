@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getSearchResults } from '../actions/searchActions';
+import React, { useState, useEffect, useContext } from 'react';
 import SearchResultsSearchBar from './SearchResultsSearchBar';
 import NoResults from './NoResults';
 import SearchResultsListItem from './SearchResultsListItem'
 import noImage from './images/no-movie-image.png';
 import Pagination from './Pagination';
+import SearchContext from '../context/search/searchContext';
 
 
+const SearchResults = () => {
+    const searchContext = useContext(SearchContext);
+    const { getSearchResults, searchResults, searchResultsAreLoaded } = searchContext;
 
-const SearchResults = ({ getSearchResults, searchResults, searchResultsAreLoaded }) => {
     const [page, setPage] = useState(1);
 
     const clearState = () => {
@@ -30,6 +31,7 @@ const SearchResults = ({ getSearchResults, searchResults, searchResultsAreLoaded
         const path = window.location.pathname.split('/')[2]
         const query = path !== undefined ? path : ''
         getSearchResults(query, page);
+        window.scrollTo({ top: 0, behavior: 'auto' });
         // eslint-disable-next-line
     }, [page])
 
@@ -68,10 +70,4 @@ const SearchResults = ({ getSearchResults, searchResults, searchResultsAreLoaded
     )
 }
 
-
-const mapStateToProps = state => ({
-    searchResults: state.search.searchResults,
-    searchResultsAreLoaded: state.search.searchResultsAreLoaded
-})
-
-export default connect(mapStateToProps, { getSearchResults })(SearchResults)
+export default SearchResults;

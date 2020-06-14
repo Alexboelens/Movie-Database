@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux';
-import { getTvShowById } from '../actions/tvShowActions'
+import React, { useEffect, useContext } from 'react';
+import TvContext from '../context/tv/tvContext';
 import CastItem from './CastItem';
 
 
-const TvShowCast = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
+const TvShowCast = () => {
     const id = window.location.pathname.split('/')[2];
+
+    const tvContext = useContext(TvContext);
+    const { tvShow, tvShowIsLoaded, getTvShowById } = tvContext;
+
 
     useEffect(() => {
         getTvShowById(id);
+        window.scrollTo({ top: 0, behavior: 'auto' });
         // eslint-disable-next-line
     }, [id])
 
@@ -30,10 +34,4 @@ const TvShowCast = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    tvShow: state.tvShows.tvShow,
-    tvShowIsLoaded: state.tvShows.tvShowIsLoaded
-})
-
-
-export default connect(mapStateToProps, { getTvShowById })(TvShowCast);
+export default TvShowCast;

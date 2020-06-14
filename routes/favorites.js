@@ -2,12 +2,11 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
-const User = require('../models/User');
 const Favorite = require('../models/Favorite');
 
 
 // api/favorites GET
-// Get all users favorites
+// Get the favorites with the same id as the current logged in user.
 // PRIVATE
 router.get('/', auth, async (req, res) => {
     try {
@@ -17,13 +16,13 @@ router.get('/', auth, async (req, res) => {
         console.error(err.message);
         return res.status(500).send('Server Error');
     }
-
 });
 
 // api/favorites POST
 // Add a favorite item
 // PRIVATE
 router.post('/', [auth, [
+    check('item_id', 'Please add the id of the item').not().isEmpty(),
     check('image', 'Please add a image URL').not().isEmpty(),
     check('title', 'Please include a title').not().isEmpty(),
     check('category', 'Please add a category of person, tv or movie').not().isEmpty()
@@ -32,14 +31,15 @@ router.post('/', [auth, [
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    const { title, image, category } = req.body;
+    const { title, image, category, item_id } = req.body;
 
     try {
         const newFavorite = new Favorite({
             user: req.user.id,
             title,
             image,
-            category
+            category,
+            item_id
         })
 
         const exists = await Favorite.findOne({
@@ -65,17 +65,12 @@ router.post('/', [auth, [
 // PRIVATE
 router.delete('/:id', auth, async (req, res) => {
     try {
-        let favorite = await Favorite.findById(req.params.id)
+        let favorite = await Favorite.findOne({ item_id: req.params.id, user: req.user.id });
 
-        if (!favorite) return res.status(404).json({ msg: 'Favorite not found' })
+        if (!favorite) return res.status(404).json({ msg: 'Favorite not found' });
 
-        // make sure user owns the favorite
-        if (favorite.user.toString() !== req.user.id) {
-            return res.status(401).json({ msg: 'Not authorized' })
-        }
-
-        await Favorite.findByIdAndRemove(req.params.id);
-        res.json({ msg: 'Favorite deleted' });
+        await Favorite.findOneAndRemove({ item_id: req.params.id, user: req.user.id });
+        return res.status(200).json({ msg: 'Favorite deleted' });
 
     } catch (err) {
         console.error(err.message);

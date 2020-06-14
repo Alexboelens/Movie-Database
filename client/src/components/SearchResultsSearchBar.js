@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Container, Row, Col, Form, FormGroup, Button, Input } from 'reactstrap';
-import { connect } from 'react-redux'
-import { getSearchResults } from '../actions/searchActions';
+import SearchContext from '../context/search/searchContext';
 
+const SearchResultSearchBar = ({ history }) => {
+    const searchContext = useContext(SearchContext);
+    const { onClick, getSearchResults } = searchContext;
 
-const SearchResultSearchBar = ({ history, onClick, getSearchResults }) => {
     const [input, setInput] = useState('')
 
     const handleChange = e => {
@@ -21,7 +22,7 @@ const SearchResultSearchBar = ({ history, onClick, getSearchResults }) => {
         const query = input.toLowerCase();
         history.push(`/search/${query}`);
         getSearchResults(query, 1);
-        setInput('')
+        setInput('');
     }
 
     return (
@@ -49,9 +50,4 @@ const SearchResultSearchBar = ({ history, onClick, getSearchResults }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    searchResults: state.search.searchResults,
-    searchResultsAreLoaded: state.search.searchResultsAreLoaded
-})
-
-export default withRouter(connect(mapStateToProps, { getSearchResults })(SearchResultSearchBar));
+export default withRouter(SearchResultSearchBar);

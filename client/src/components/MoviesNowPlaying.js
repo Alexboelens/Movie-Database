@@ -8,7 +8,6 @@ import MovieContext from '../context/movie/movieContext';
 
 const MoviesNowPlaying = () => {
     const movieContext = useContext(MovieContext);
-
     const { nowPlayingLoaded, nowPlayingMovies, getMoviesNowPlaying } = movieContext;
 
     const [page, setPage] = useState(1);

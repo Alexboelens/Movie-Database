@@ -11,8 +11,9 @@ const MovieCast = () => {
 
     useEffect(() => {
         getMoviesById(id)
+        window.scrollTo({ top: 0, behavior: 'auto' });
         // eslint-disable-next-line
-    }, [])
+    }, [id])
 
     return (
         <div>

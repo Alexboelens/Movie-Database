@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getTvShowsAiringToday } from '../actions/tvShowActions'
+import React, { useEffect, useState, useContext } from 'react';
+import TvContext from '../context/tv/tvContext';
 import { Container, Row, Col } from 'reactstrap'
 import noImage from './images/no-movie-image.png';
 import Box from './Box';
 import Pagination from './Pagination';
 
 
-const TvAiringToday = ({ airingTvShows, airingTvShowsLoaded, getTvShowsAiringToday }) => {
+const TvAiringToday = () => {
+    const tvContext = useContext(TvContext);
+    const { airingTvShows, airingTvShowsLoaded, getTvShowsAiringToday } = tvContext;
+
     const [page, setPage] = useState(1);
+
 
     useEffect(() => {
         getTvShowsAiringToday(page);
@@ -64,10 +67,5 @@ const TvAiringToday = ({ airingTvShows, airingTvShowsLoaded, getTvShowsAiringTod
     )
 }
 
-const mapStateToProps = state => ({
-    airingTvShows: state.tvShows.airingTvShows,
-    airingTvShowsLoaded: state.tvShows.airingTvShowsLoaded
-})
-
-export default connect(mapStateToProps, { getTvShowsAiringToday })(TvAiringToday);
+export default TvAiringToday;
 

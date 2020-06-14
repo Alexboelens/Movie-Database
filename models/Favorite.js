@@ -16,6 +16,10 @@ const FavoriteSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true
+    },
+    item_id: {
+        type: String,
+        required: true
     }
 })
 

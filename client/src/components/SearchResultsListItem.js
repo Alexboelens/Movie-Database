@@ -8,7 +8,7 @@ const SearchResultsListItem = ({ item, title, content, noImage }) => {
         if (item.media_type === 'person') {
             return `/people/${item.id}`
         } else if (item.media_type === 'tv') {
-            return `/tv-shows/${item.id}`
+            return `/tv/${item.id}`
         } else {
             return `/movies/${item.id}`
         }

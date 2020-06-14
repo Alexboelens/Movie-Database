@@ -8,7 +8,6 @@ import MovieContext from '../context/movie/movieContext';
 
 const MoviesUpcoming = () => {
     const movieContext = useContext(MovieContext);
-
     const { upcomingLoaded, upcomingMovies, getUpcomingMovies } = movieContext;
 
     const [page, setPage] = useState(1);

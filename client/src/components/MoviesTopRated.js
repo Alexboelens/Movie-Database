@@ -8,7 +8,6 @@ import MovieContext from '../context/movie/movieContext';
 
 const MoviesTopRated = () => {
     const movieContext = useContext(MovieContext);
-
     const { topRatedLoaded, topRatedMovies, getTopRatedMovies } = movieContext;
 
     const [page, setPage] = useState(1);

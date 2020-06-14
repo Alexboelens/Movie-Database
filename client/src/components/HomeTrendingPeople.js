@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getTrendingPeople } from '../actions/peopleActions';
+import React, { useEffect, useContext } from 'react';
 import Box from './Box';
 import { Container, Row, Col } from 'reactstrap';
-import noImage from './images/no-person-image.png'
+import noImage from './images/no-person-image.png';
+import PeopleContext from '../context/people/peopleContext';
 
 
-const HomeTrendingPeople = ({ getTrendingPeople, trendingPeople, trendingPeopleAreLoaded }) => {
+const HomeTrendingPeople = () => {
+    const peopleContext = useContext(PeopleContext);
+    const { getTrendingPeople, trendingPeople, trendingPeopleAreLoaded } = peopleContext;
 
     useEffect(() => {
         getTrendingPeople();
-    }, [getTrendingPeople])
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <Container>
@@ -42,9 +44,4 @@ const HomeTrendingPeople = ({ getTrendingPeople, trendingPeople, trendingPeopleA
     )
 }
 
-const mapStateToProps = state => ({
-    trendingPeople: state.people.trendingPeople,
-    trendingPeopleAreLoaded: state.people.trendingPeopleAreLoaded
-})
-
-export default connect(mapStateToProps, { getTrendingPeople })(HomeTrendingPeople);
+export default HomeTrendingPeople;

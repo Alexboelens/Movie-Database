@@ -1,20 +1,24 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getTvShowById } from '../actions/tvShowActions';
+import React, { useEffect, useContext } from 'react';
+import TvContext from '../context/tv/tvContext';
 import SingleItemHeader from './SingleItemHeader';
 import SingleItemCast from './SingleItemCast';
 import SingleSimilar from './SingleSimilar';
 import SingleReviews from './SingleReviews';
 import SingleItemVideos from './SingleItemVideos';
+import FavoriteButton from './FavoriteButton';
 
 
-const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
+const TvShowPage = () => {
     const id = window.location.pathname.split('/')[2];
 
+    const tvContext = useContext(TvContext);
+    const { tvShow, tvShowIsLoaded, getTvShowById } = tvContext;
+
     useEffect(() => {
-        getTvShowById(id)
+        getTvShowById(id);
+        window.scrollTo({ top: 0, behavior: 'auto' });
         // eslint-disable-next-line
-    }, [])
+    }, [id])
 
     return (
         <div>
@@ -33,7 +37,12 @@ const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
                         tagLine={tvShow.tagline}
                         overview={tvShow.overview}
                         itemImage={tvShow.poster_path !== null && `https://image.tmdb.org/t/p/original${tvShow.poster_path}`}
-                    />
+                    >
+                        <FavoriteButton
+                            title={tvShow.title ? tvShow.title : tvShow.original_name}
+                            image={tvShow.poster_path}
+                        />
+                    </SingleItemHeader>
 
                     <SingleItemCast
                         type='tv'
@@ -59,14 +68,8 @@ const TvShowPage = ({ tvShow, tvShowIsLoaded, getTvShowById }) => {
                     />
                 </div>
             }
-
         </div>
     )
 }
 
-const mapStateToProps = state => ({
-    tvShow: state.tvShows.tvShow,
-    tvShowIsLoaded: state.tvShows.tvShowIsLoaded
-})
-
-export default connect(mapStateToProps, { getTvShowById })(TvShowPage);
+export default TvShowPage;

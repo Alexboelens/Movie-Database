@@ -1,12 +1,7 @@
-import { GET_SEARCH_RESULTS } from '../actions/types'
-
-const initialState = {
-    searchResults: '',
-    searchResultsAreLoaded: false
-}
+import { GET_SEARCH_RESULTS } from '../types';
 
 
-export default function (state = initialState, action) {
+export default (state, action) => {
     switch (action.type) {
         case GET_SEARCH_RESULTS:
             return {

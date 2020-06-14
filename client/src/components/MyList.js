@@ -2,7 +2,7 @@ import React from 'react';
 
 const MyList = () => {
     return (
-        <h1>MyList page</h1>
+        <h1>favorites page</h1>
     )
 }
 

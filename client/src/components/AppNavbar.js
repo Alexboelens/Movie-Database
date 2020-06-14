@@ -17,11 +17,11 @@ const AppNavbar = () => {
     }, []);
 
     const toggle = () => {
-        setIsOpen(!isOpen)
+        setIsOpen(!isOpen);
     }
 
     const handleLogout = () => {
-        logoutUser()
+        logoutUser();
     }
 
     const authLinks = (
@@ -30,7 +30,7 @@ const AppNavbar = () => {
                 <NavLink to='#!' className='active'>Welcome {user && user.name}</NavLink>
             </NavItem>
             <NavItem>
-                <NavLink tag={RRNavLink} activeClassName='active' className='mr-1' to='/my-list'>Favorites</NavLink>
+                <NavLink tag={RRNavLink} activeClassName='active' className='mr-1' to='/favorites'>Favorites</NavLink>
             </NavItem>
             <NavItem>
                 <NavLink to='#!' onClick={handleLogout}>

@@ -1,17 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getPopularPeople } from '../actions/peopleActions';
+import React, { useState, useEffect, useContext } from 'react';
 import { Container } from 'reactstrap'
 import Pagination from './Pagination';
 import CastItem from './CastItem';
+import PeopleContext from '../context/people/peopleContext';
 
 
-const PopularPeople = ({ popularLoaded, popularPeople, getPopularPeople }) => {
+const PopularPeople = () => {
+    const peopleContext = useContext(PeopleContext);
+    const { popularLoaded, popularPeople, getPopularPeople } = peopleContext;
+
     const [page, setPage] = useState(1);
 
     useEffect(() => {
         getPopularPeople(page);
-        window.scrollTo({ top: 0 });
+        window.scrollTo({ top: 0, behavior: 'auto' });
         // eslint-disable-next-line
     }, [page])
 
@@ -49,10 +51,5 @@ const PopularPeople = ({ popularLoaded, popularPeople, getPopularPeople }) => {
     )
 }
 
-const mapStateToProps = state => ({
-    popularPeople: state.people.popularPeople,
-    popularLoaded: state.people.popularLoaded
-})
-
-export default connect(mapStateToProps, { getPopularPeople })(PopularPeople);
+export default PopularPeople;
 

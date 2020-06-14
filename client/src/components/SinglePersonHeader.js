@@ -4,14 +4,14 @@ import noImage from './images/no-person-image.png';
 const getAge = require("findage");
 
 
-const SinglePersonHeader = ({ name, knownFor, birthday, placeOfBirth, image, biography }) => {
+const SinglePersonHeader = ({ name, knownFor, birthday, placeOfBirth, image, biography, children }) => {
 
     const renderAge = birthDate => {
         if (birthDate === null) {
             return 'Unknown'
         } else {
             birthDate = birthDate.split('-');
-            const newDate = `${birthDate[1]}/${birthDate[2]}/${birthDate[0]}`
+            const newDate = `${birthDate[1]}/${birthDate[2]}/${birthDate[0]}`;
             return getAge.fullAge(newDate).split(' ')[0];
         }
     }
@@ -30,17 +30,18 @@ const SinglePersonHeader = ({ name, knownFor, birthday, placeOfBirth, image, bio
 
     const renderPlaceOfBirth = place => {
         if (place === null) {
-            return 'Unknown'
+            return 'Unknown';
         } else {
-            return place
+            return place;
         }
     }
 
     return (
         <Container fluid={true} className='my-5 person-container'>
             <Row>
-                <Col xs='12' md='3' className='d-flex justify-content-center test'>
-                    <div className="single-person-image" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${image}), url(${noImage})` }}></div>
+                <Col xs='12' md='3' className='d-flex flex-column align-items-center'>
+                    <div className="single-person-image" style={{ backgroundImage: image !== null ? `url(https://image.tmdb.org/t/p/original/${image})` : `url(${noImage})` }}></div>
+                    {children}
                 </Col>
                 <Col className='test'>
                     <Row>

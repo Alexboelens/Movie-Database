@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getTrendingTvShows } from '../actions/tvShowActions';
+import React, { useEffect, useContext } from 'react';
 import Box from './Box';
 import { Container, Row, Col } from 'reactstrap';
 import noImage from './images/no-movie-image.png';
+import TvContext from '../context/tv/tvContext';
 
 
-const HomeTrendingTvShows = ({ getTrendingTvShows, trendingTvShows, trendingTvShowsAreLoaded }) => {
+const HomeTrendingTvShows = () => {
+    const tvContext = useContext(TvContext);
+
+    const { getTrendingTvShows, trendingTvShows, trendingTvShowsAreLoaded } = tvContext;
 
     useEffect(() => {
         getTrendingTvShows();
-    }, [getTrendingTvShows])
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <Container>
@@ -42,9 +45,4 @@ const HomeTrendingTvShows = ({ getTrendingTvShows, trendingTvShows, trendingTvSh
     )
 }
 
-const mapStateToProps = state => ({
-    trendingTvShows: state.tvShows.trendingTvShows,
-    trendingTvShowsAreLoaded: state.tvShows.trendingTvShowsAreLoaded
-})
-
-export default connect(mapStateToProps, { getTrendingTvShows })(HomeTrendingTvShows);
+export default HomeTrendingTvShows;

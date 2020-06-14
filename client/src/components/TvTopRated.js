@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getTopRatedTvShows } from '../actions/tvShowActions'
+import React, { useEffect, useState, useContext } from 'react';
+import TvContext from '../context/tv/tvContext';
 import { Container, Row, Col } from 'reactstrap'
 import noImage from './images/no-movie-image.png';
 import Box from './Box';
 import Pagination from './Pagination';
 
 
+const TvTopRated = () => {
+    const tvContext = useContext(TvContext);
+    const { topRatedTvShows, topRatedTvShowsLoaded, getTopRatedTvShows } = tvContext;
 
-const TvTopRated = ({ topRatedTvShows, topRatedTvShowsLoaded, getTopRatedTvShows }) => {
     const [page, setPage] = useState(1);
 
     useEffect(() => {
@@ -65,10 +66,5 @@ const TvTopRated = ({ topRatedTvShows, topRatedTvShowsLoaded, getTopRatedTvShows
     )
 }
 
-const mapStateToProps = state => ({
-    topRatedTvShows: state.tvShows.topRatedTvShows,
-    topRatedTvShowsLoaded: state.tvShows.topRatedTvShowsLoaded
-})
-
-export default connect(mapStateToProps, { getTopRatedTvShows })(TvTopRated);
+export default TvTopRated;
 

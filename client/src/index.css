@@ -297,3 +297,13 @@
 label {
     font-weight: bold;
 }
+
+/* favorite button */
+
+.favorite-btn {
+    min-height: 55px;
+}
+
+.heart-icon {
+    font-size: 40px;
+}

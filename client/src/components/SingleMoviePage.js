@@ -5,19 +5,23 @@ import SingleItemVideos from './SingleItemVideos';
 import SingleSimilar from './SingleSimilar';
 import SingleReviews from './SingleReviews';
 import MovieContext from '../context/movie/movieContext';
+import FavoriteButton from './FavoriteButton';
+
 
 
 const SingleMoviePage = () => {
     const id = window.location.pathname.split('/')[2];
-
     const movieContext = useContext(MovieContext);
 
     const { getMoviesById, movies, moviesAreLoaded } = movieContext;
 
     useEffect(() => {
         getMoviesById(id);
+        window.scrollTo({ top: 0, behavior: 'auto' });
         // eslint-disable-next-line
-    }, [])
+    }, [id])
+
+    console.log(movies)
 
     return (<div>
         {moviesAreLoaded && <div>
@@ -32,7 +36,13 @@ const SingleMoviePage = () => {
                 tagLine={movies.tagline}
                 overview={movies.overview}
                 itemImage={movies.poster_path !== null && `https://image.tmdb.org/t/p/original${movies.poster_path}`}
-            />
+            >
+                <FavoriteButton
+                    title={movies.title}
+                    image={movies.poster_path}
+                />
+            </SingleItemHeader>
+
             <SingleItemCast
                 type='movies'
                 mainTitle='Top Actors'
