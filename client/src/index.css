@@ -277,9 +277,6 @@
     flex-direction: column;
 }
 
-.person-container {
-    border-bottom: 3px solid lightgray;
-}
 
 /* single person roles component */
 .roles-wrap {
@@ -325,4 +322,12 @@ label {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+/* forms */
+
+.form-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
 }

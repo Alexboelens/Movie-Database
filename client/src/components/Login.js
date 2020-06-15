@@ -49,48 +49,52 @@ const Login = ({ history }) => {
     }
 
     return (
-        <Container>
-            <Container className='text-center'>
-                <h3 className='my-5'>Login</h3>
-            </Container>
-
-            <Form onSubmit={handleSubmit}>
-                <FormGroup>
-                    <Label for="email">Email</Label>
-                    <Input
-                        onChange={handleChange}
-                        value={email}
-                        type="email"
-                        name="email"
-                        id="email"
-                        placeholder="Enter your email address"
-                        required
-                    />
-                </FormGroup>
-
-                <FormGroup>
-                    <Label for="password">Password</Label>
-                    <Input
-                        onChange={handleChange}
-                        value={password}
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Choose a password"
-                        required
-                    />
-                </FormGroup>
+        <Container className='d-flex justify-content-center'>
+            <div className='form-wrap'>
 
                 <Container className='text-center'>
-                    <Button
-                        color='primary'
-                        type='submit'
-                        className='mt-4'>
-                        Login
-                    </Button>
+                    <h3 className='my-5'>Login</h3>
                 </Container>
 
-            </Form>
+                <Form onSubmit={handleSubmit}>
+                    <FormGroup>
+                        <Label for="email">Email</Label>
+                        <Input
+                            onChange={handleChange}
+                            value={email}
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="Enter your email address"
+                            required
+                        />
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label for="password">Password</Label>
+                        <Input
+                            onChange={handleChange}
+                            value={password}
+                            type="password"
+                            name="password"
+                            id="password"
+                            placeholder="Choose a password"
+                            required
+                        />
+                    </FormGroup>
+
+                    <Container className='text-center'>
+                        <Button
+                            color='primary'
+                            type='submit'
+                            className='mt-4'>
+                            Login
+                    </Button>
+                    </Container>
+
+                </Form>
+            </div>
+
         </Container>
     )
 }

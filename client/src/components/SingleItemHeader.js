@@ -38,7 +38,7 @@ const SingleItemHeader = ({ children, backdrop, title, year, releaseDate, runTim
                             {numSeasons && <p>Seasons: {numSeasons}</p>}
                             <p>Status: {status}</p>
                             <h4 className='tagline'>{tagLine}</h4>
-                            <div className='mt-3'>{overview}</div>
+                            <div className='mt-3 pb-5'>{overview}</div>
                         </Col>
                     </Row>
                 </Col>

@@ -21,8 +21,6 @@ const SingleMoviePage = () => {
         // eslint-disable-next-line
     }, [id])
 
-    console.log(movies)
-
     return (<div>
         {moviesAreLoaded && <div>
             <SingleItemHeader

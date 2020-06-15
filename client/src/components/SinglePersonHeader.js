@@ -38,11 +38,11 @@ const SinglePersonHeader = ({ name, knownFor, birthday, placeOfBirth, image, bio
     }
 
     return (
-        <Container fluid={true} className='mb-5 person-container'>
+        <Container fluid={true} className='mb-5'>
             <Row className='single-item-image-wrap text-light' style={{ backgroundImage: `url(${banner})` }}>
                 <Col className="opacity-wrap">
                     <Row>
-                        <Col xs='12' md='3' className='d-flex flex-column align-items-center'>
+                        <Col xs='12' md='3' className='d-flex flex-column align-items-center pb-5'>
                             <div className="single-person-image mt-5" style={{ backgroundImage: image !== null ? `url(https://image.tmdb.org/t/p/original/${image})` : `url(${noImage})` }}></div>
                             {children}
                         </Col>
