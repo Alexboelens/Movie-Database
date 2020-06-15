@@ -26,6 +26,10 @@
     background-color: rgba(10, 10, 10, 0.8);
 }
 
+.grey {
+    color: grey;
+}
+
 /* Navbar */
 
 .logo-wrap {
@@ -306,4 +310,19 @@ label {
 
 .heart-icon {
     font-size: 40px;
+}
+
+/* favorite page */
+
+.fav-wrap {
+    border: 1px solid grey;
+}
+
+.fav-image {
+    min-width: 100%;
+    min-height: 167px;
+    border: 1px solid grey;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }

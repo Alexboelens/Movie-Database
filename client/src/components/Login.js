@@ -86,7 +86,7 @@ const Login = ({ history }) => {
                         color='primary'
                         type='submit'
                         className='mt-4'>
-                        Register
+                        Login
                     </Button>
                 </Container>
 

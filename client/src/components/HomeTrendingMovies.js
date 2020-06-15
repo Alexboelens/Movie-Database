@@ -10,6 +10,8 @@ const HomeTrendingMovies = () => {
 
     const { trendingMovies, trendingMoviesAreLoaded, getTrendingMovies } = movieContext;
 
+
+
     useEffect(() => {
         getTrendingMovies();
         // eslint-disable-next-line

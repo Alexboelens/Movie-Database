@@ -4,7 +4,6 @@ import noImage from './images/no-movie-image.png';
 import banner from './images/moviebanner.png';
 
 
-
 const SingleItemHeader = ({ children, backdrop, title, year, releaseDate, runTime, genres, status, tagLine, overview, itemImage, type, numSeasons, numEpisodes }) => {
     const renderRuntime = num => {
         var minute = num % 60;
@@ -14,11 +13,11 @@ const SingleItemHeader = ({ children, backdrop, title, year, releaseDate, runTim
 
     return (
         <Container fluid={true}>
-            <Row className='single-item-image-wrap text-light' style={{ backgroundImage: backdrop !== null ? `url(${backdrop})` : `url(${banner})` }}>
+            <Row className='single-item-image-wrap text-light' style={{ backgroundImage: backdrop ? `url(${backdrop})` : `url(${banner})` }}>
                 <Col className="opacity-wrap">
                     <Row className='pt-4'>
                         <Col xs='12' md='4' lg='3' className='single-wrap-one d-flex flex-column'>
-                            <div className="single-item-image" style={{ backgroundImage: itemImage !== null ? `url(${itemImage})` : `url(${noImage})` }}></div>
+                            <div className="single-item-image" style={{ backgroundImage: itemImage ? `url(${itemImage})` : `url(${noImage})` }}></div>
                             {children}
                         </Col>
                         <Col xs='12' md='8' lg='9'>

@@ -21,7 +21,7 @@ import Login from './components/Login';
 import NoSearchResults from './components/NoSearchResult';
 import SearchResults from './components/SearchResults';
 import Register from './components/Register';
-import MyList from './components/MyList';
+import FavoritePage from './components/FavoritePage';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
 import MovieState from './context/movie/MovieState';
@@ -30,11 +30,11 @@ import PeopleState from './context/people/PeopleState';
 import SearchState from './context/search/SearchState';
 import FavoriteState from './context/favorite/FavoriteState';
 import Alerts from './components/Alerts';
+import PrivateRoute from './components/PrivateRoute';
 
 
 const App = () => {
   return (
-
     <AuthState>
       <MovieState>
         <TvState>
@@ -67,7 +67,7 @@ const App = () => {
                       <Route exact path='/search/:query' component={SearchResults} />
                       <Route exact path='/login' component={Login} />
                       <Route exact path='/register' component={Register} />
-                      <Route exact path='/favorites' component={MyList} />
+                      <PrivateRoute exact path='/favorites' component={FavoritePage} />
                     </Switch>
 
                   </Router>

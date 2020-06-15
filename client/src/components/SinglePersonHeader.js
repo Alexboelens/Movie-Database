@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import noImage from './images/no-person-image.png';
+import banner from './images/moviebanner.png';
 const getAge = require("findage");
 
 
@@ -37,28 +38,32 @@ const SinglePersonHeader = ({ name, knownFor, birthday, placeOfBirth, image, bio
     }
 
     return (
-        <Container fluid={true} className='my-5 person-container'>
-            <Row>
-                <Col xs='12' md='3' className='d-flex flex-column align-items-center'>
-                    <div className="single-person-image" style={{ backgroundImage: image !== null ? `url(https://image.tmdb.org/t/p/original/${image})` : `url(${noImage})` }}></div>
-                    {children}
-                </Col>
-                <Col className='test'>
+        <Container fluid={true} className='mb-5 person-container'>
+            <Row className='single-item-image-wrap text-light' style={{ backgroundImage: `url(${banner})` }}>
+                <Col className="opacity-wrap">
                     <Row>
+                        <Col xs='12' md='3' className='d-flex flex-column align-items-center'>
+                            <div className="single-person-image mt-5" style={{ backgroundImage: image !== null ? `url(https://image.tmdb.org/t/p/original/${image})` : `url(${noImage})` }}></div>
+                            {children}
+                        </Col>
                         <Col>
-                            <div className='person-info-wrap'>
-                                <h1 className='pb-3'>{name}</h1>
-                                <p className='bold'>Birthday</p>
-                                {birthday && <p>{renderBirthday(birthday)}</p>}
-                                <p className='bold'>Age</p>
-                                <p>{renderAge(birthday)}</p>
-                                <p className='bold'>Known for</p>
-                                <p>{knownFor}</p>
-                                <p className='bold'>Place of Birth</p>
-                                <p>{renderPlaceOfBirth(placeOfBirth)}</p>
-                                <p className='bold'>Biography</p>
-                                <p className='pb-5'>{renderBiography(biography)}</p>
-                            </div>
+                            <Row>
+                                <Col>
+                                    <div className='person-info-wrap mt-5'>
+                                        <h1 className='pb-3 text-warning'>{name}</h1>
+                                        <p className='bold'>Birthday</p>
+                                        {birthday && <p>{renderBirthday(birthday)}</p>}
+                                        <p className='bold'>Age</p>
+                                        <p>{renderAge(birthday)}</p>
+                                        <p className='bold'>Known for</p>
+                                        <p>{knownFor}</p>
+                                        <p className='bold'>Place of Birth</p>
+                                        <p>{renderPlaceOfBirth(placeOfBirth)}</p>
+                                        <p className='bold'>Biography</p>
+                                        <p className='pb-5'>{renderBiography(biography)}</p>
+                                    </div>
+                                </Col>
+                            </Row>
                         </Col>
                     </Row>
                 </Col>
