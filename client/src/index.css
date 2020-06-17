@@ -38,6 +38,10 @@
     align-items: center;
 }
 
+.logo {
+    width: 35%;
+}
+
 #navbar {
     margin-bottom: 0 !important;
     background-color: rgb(17, 17, 19) !important;

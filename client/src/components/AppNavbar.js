@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, Fragment } from 'react';
 import { NavLink as RRNavLink } from 'react-router-dom';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import icon from '../components/images/logo.png';
+import icon from '../components/images/tmdb-logo.svg';
 import AuthContext from '../context/auth/authContext';
 
 
@@ -57,8 +57,8 @@ const AppNavbar = () => {
             <Navbar color="dark" dark expand='lg' className='mb-5 navbar' id='navbar'>
 
                 <div className='logo-wrap mr-5'>
-                    <img src={icon} alt="logo" />
-                    <NavbarBrand tag={RRNavLink} to='/'>Movie Database</NavbarBrand>
+                    <img src={icon} alt="logo" className='logo' />
+                    <NavbarBrand tag={RRNavLink} to='/'></NavbarBrand>
                 </div>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
