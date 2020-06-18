@@ -14,6 +14,8 @@ const HomeTrendingPeople = () => {
         // eslint-disable-next-line
     }, [])
 
+    console.log(trendingPeople)
+
     return (
         <Container>
             {trendingPeopleAreLoaded &&
